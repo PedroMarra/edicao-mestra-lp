@@ -1,0 +1,12 @@
+{
+  "name": "edicao-mestra-lp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Página de vendas da Edição Mestra (paleta N1 Aurora). Site estático gerado sem dependências.",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && npx --yes serve dist -l 4173"
+  },
+  "engines": { "node": ">=18" }
+}

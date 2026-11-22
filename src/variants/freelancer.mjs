@@ -1,0 +1,25 @@
+// Variante FREELANCER — casa com o criativo A ("Editor que entrega em 24h").
+export default {
+  slug: 'freelancer',
+  out: 'freelancer.html',
+  meta: {
+    title: 'Edição Mestra · Entregue em 24h sem virar a noite',
+    description: 'Skill para usar com o Claude que faz o corte braçal no Premiere. Entregue mais rápido e atenda mais clientes. R$37, pagamento único.',
+  },
+  hero: {
+    eyebrow: 'Skill do Claude para editores',
+    title: 'Editor que entrega em <span class="grad">24h</span> pode cobrar mais caro.',
+    altTitle: 'Corte o bruto em {after}, não numa tarde inteira.',
+    sub: 'Uma skill do Claude que faz o corte braçal, as legendas e os zooms direto no Premiere. Você entrega mais rápido e usa seu tempo no que o cliente paga: o criativo.',
+    cta: 'Quero entregar mais rápido',
+  },
+  pain: {
+    title: 'O bruto de 20 minutos é <span class="grad">silêncio</span> pela metade.',
+    chart: 'cuts',
+    items: [
+      { k: 'Corte braçal', t: 'Tirar pausa, erro e repetição de cada cliente é o trabalho que ninguém vê e todo mundo cobra pouco.' },
+      { k: 'Prazo apertado', t: 'Três clientes no mesmo dia e a entrega vira madrugada.' },
+      { k: 'Job recusado', t: 'Sem tempo sobrando, você diz não para o cliente que pagaria mais.' },
+    ],
+  },
+};
