@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────
 export default {
   brand: 'Edição Mestra',
-  domain: '', // ex.: 'https://edicaomestra.com.br' (usado no Open Graph)
+  domain: 'https://pedromarra.github.io/edicao-mestra-lp', // trocar pelo domínio próprio quando comprar (usado no Open Graph)
 
   // Checkout (Hotmart ou Kiwify) com o order bump já configurado.
   // Todos os botões apontam para cá e herdam os UTMs da página.

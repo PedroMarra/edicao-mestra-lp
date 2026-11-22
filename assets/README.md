@@ -9,7 +9,8 @@ Solte os arquivos aqui com estes nomes e rode `node build.mjs`. O build troca ca
 | `antes.mp4` / `antes-poster.webp` | Trecho cru, sem edição | MP4 vertical 9:16, até ~3 MB |
 | `depois.mp4` / `depois-poster.webp` | O mesmo trecho editado pela skill | MP4 vertical 9:16, até ~3 MB |
 | `demo.vtt`, `antes.vtt`, `depois.vtt` | Legendas (só se o vídeo tiver fala) | WebVTT |
-| `autor.webp` | Sua foto | WebP 640×640 |
+| `autor.webp` | Sua foto (seção Quem criou) | WebP 800×1000 (4:5) |
+| `autor-retrato.webp`, `autor-notebook.webp` | Fotos extras para usar depois | WebP |
 | `og.jpg` | Imagem de compartilhamento (WhatsApp, Instagram) | JPG 1200×630 |
 | `depo-1.webp`… | Foto de quem deu depoimento (opcional) | WebP 80×80 |
 
