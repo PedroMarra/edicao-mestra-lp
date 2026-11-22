@@ -16,7 +16,7 @@ export const join_ = (arr, fn) => arr.map(fn).join('');
 
 /** Botão principal. data-cta é lido pelo main.js (UTM + pixel). */
 export const cta = (site, label, id = '') =>
-  `<a class="btn" ${id ? `id="${id}"` : ''} data-cta href="${site.checkoutUrl || '#oferta'}">${label}</a>`;
+  `<a class="btn" ${id ? `id="${id}"` : ''} data-cta href="${site.checkoutUrl || '#oferta'}"><span class="btn__label">${label}</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
 
 export const priceLine = (site) =>
   `<p class="price-line">${site.price.value} · ${site.price.note} · ${site.price.access}</p>`;

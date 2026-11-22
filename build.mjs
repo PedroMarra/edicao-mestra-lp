@@ -16,8 +16,8 @@ const layout = (await import(pathToFileURL(join(SRC, 'layouts/page.mjs')))).defa
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
 
-// CSS: tokens → base → componentes → seções, num arquivo só.
-const cssOrder = ['tokens.css', 'base.css', 'components.css', 'sections.css'];
+// CSS: tokens → base → componentes → seções → movimento, num arquivo só.
+const cssOrder = ['tokens.css', 'base.css', 'components.css', 'sections.css', 'motion.css'];
 writeFileSync(join(DIST, 'styles.css'), cssOrder.map((f) => readFileSync(join(SRC, 'styles', f), 'utf8')).join('\n'));
 
 // JS com o checkout injetado.

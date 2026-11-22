@@ -26,6 +26,7 @@ export default ({ site, v, c }) => {
         <div class="screen__body">
           ${video({ file: 'demo.mp4', poster: 'demo-poster.webp', desc: 'vídeo demo de 15–30s, Claude Code + Premiere editando', hero: true, label: 'Demonstração da Edição Mestra editando no Premiere' })}
           <span class="screen__tc" aria-hidden="true" data-timecode>00:00:14:22</span>
+          <span class="screen__scan" aria-hidden="true"></span>
         </div>
       </div>
     </div>

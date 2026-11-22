@@ -3,6 +3,10 @@
 const CHECKOUT_URL = '__CHECKOUT_URL__';
 
 (() => {
+  document.documentElement.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
   // 1. Botões → checkout, repassando UTMs e parâmetros de rastreio.
   const KEEP = /^(utm_|src$|sck$|xcod$|fbclid$|ttclid$|gclid$)/;
   const params = new URLSearchParams(location.search);
@@ -59,5 +63,65 @@ const CHECKOUT_URL = '__CHECKOUT_URL__';
       if (!isIntersecting && !target.paused) target.pause();
     }));
     document.querySelectorAll('video').forEach((vid) => io.observe(vid));
+  }
+
+  // 6. Revelar ao rolar (com atraso em cascata entre irmãos).
+  const sel = '.sec h2, .sec .tc, .sec .lead, .sec .note, .card, .chart, .ctaband__box, .ba__item, .pains li, .offer__box, .faq details, .guar__seal, .bignum, .steps';
+  const targets = [...document.querySelectorAll(sel)].filter((el) => !el.closest('.hero'));
+  if ('IntersectionObserver' in window && !reduce) {
+    targets.forEach((el) => {
+      el.classList.add('reveal');
+      const sibs = [...el.parentElement.children].filter((n) => n.matches(sel));
+      el.style.setProperty('--d', `${Math.min(sibs.indexOf(el), 5) * 0.08}s`);
+    });
+    const ro = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    targets.forEach((el) => ro.observe(el));
+  } else {
+    targets.forEach((el) => el.classList.add('in'));
+  }
+
+  // 7. Barra de progresso (playhead da página) e REC rodando.
+  const bar = document.querySelector('[data-progress]');
+  const rec = document.querySelector('[data-rec]');
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      if (bar) bar.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
+      ticking = false;
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  if (rec && !reduce) {
+    const t0 = performance.now(), p2 = (n) => String(n).padStart(2, '0');
+    setInterval(() => {
+      const t = (performance.now() - t0) / 1000;
+      rec.textContent = `00:${p2(Math.floor(t / 60))}:${p2(Math.floor(t % 60))}:${p2(Math.floor((t % 1) * 30))}`;
+    }, 1000 / 15);
+  }
+
+  // 8. Luz que segue o cursor (botões e cards) e tela do hero em 3D.
+  if (fine && !reduce) {
+    document.addEventListener('pointermove', (e) => {
+      const el = e.target.closest && e.target.closest('.btn, .card, .chart, .ctaband__box, .offer__box');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    }, { passive: true });
+    const media = document.querySelector('.hero__media');
+    const screen = media && media.querySelector('.screen');
+    if (media && screen) {
+      media.addEventListener('pointermove', (e) => {
+        const r = media.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        screen.style.setProperty('--ry', `${(x * 8 - 2).toFixed(2)}deg`);
+        screen.style.setProperty('--rx', `${(-y * 6).toFixed(2)}deg`);
+      });
+      media.addEventListener('pointerleave', () => { screen.style.removeProperty('--ry'); screen.style.removeProperty('--rx'); });
+    }
   }
 })();

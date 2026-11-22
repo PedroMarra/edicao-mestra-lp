@@ -27,10 +27,11 @@
 <body data-variant="creator">
 <a class="skip" href="#dor">Pular para o conteúdo</a>
 
+<div class="progress" aria-hidden="true"><i data-progress></i></div>
 <header class="topbar">
   <div class="wrap topbar__in">
     <span class="logo"><i aria-hidden="true"></i>Edição Mestra</span>
-    <span class="topbar__tc" aria-hidden="true">REC 00:00:00:00</span>
+    <span class="topbar__tc" aria-hidden="true">REC <span data-rec>00:00:00:00</span></span>
   </div>
 </header>
 
@@ -43,7 +44,7 @@
       <p class="lead">Uma skill do Claude que corta, legenda e dá ritmo ao seu vídeo direto no Premiere. Você manda o vídeo cru, ela devolve a timeline editada.</p>
       <ul class="chips" aria-label="O que a skill faz"><li>Cortes automáticos</li><li>Legendas</li><li>Zoom e ritmo</li></ul>
       <div class="hero__cta">
-        <a class="btn" id="hero-cta" data-cta href="#oferta">Quero editar mais rápido</a>
+        <a class="btn" id="hero-cta" data-cta href="#oferta"><span class="btn__label">Quero editar mais rápido</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="price-line">R$37 · pagamento único · acesso imediato</p>
         <p class="req">Requer Claude Code (plano pago do Claude) + Adobe Premiere.</p>
       </div>
@@ -54,6 +55,7 @@
         <div class="screen__body">
           <div class="fill-block" style="aspect-ratio:16/9"><span>[PREENCHER: vídeo demo de 15–30s, Claude Code + Premiere editando (assets/demo.mp4)]</span></div>
           <span class="screen__tc" aria-hidden="true" data-timecode>00:00:14:22</span>
+          <span class="screen__scan" aria-hidden="true"></span>
         </div>
       </div>
     </div>
@@ -100,7 +102,7 @@
         <p class="ctaband__sub">A skill corta silêncio, legenda e dá ritmo por você. Uma vez R$37, todos os vídeos depois disso.</p>
       </div>
       <div class="ctaband__act">
-        <a class="btn"  data-cta href="#oferta">Quero vídeos que seguram</a>
+        <a class="btn"  data-cta href="#oferta"><span class="btn__label">Quero vídeos que seguram</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="ctaband__trust">R$37 · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
@@ -128,7 +130,7 @@
         <p class="ctaband__sub">O acesso chega no seu e-mail logo depois do pagamento. No Pix, na hora.</p>
       </div>
       <div class="ctaband__act">
-        <a class="btn"  data-cta href="#oferta">Quero começar agora</a>
+        <a class="btn"  data-cta href="#oferta"><span class="btn__label">Quero começar agora</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="ctaband__trust">R$37 · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
@@ -161,7 +163,7 @@
         <p class="ctaband__sub">Você paga uma vez e usa em todos os vídeos que editar.</p>
       </div>
       <div class="ctaband__act">
-        <a class="btn"  data-cta href="#oferta">Quero esse resultado</a>
+        <a class="btn"  data-cta href="#oferta"><span class="btn__label">Quero esse resultado</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="ctaband__trust">R$37 · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
@@ -200,7 +202,7 @@
         <p class="ctaband__sub">Sem mensalidade da skill. Menos do que custa uma hora sua presa na timeline.</p>
       </div>
       <div class="ctaband__act">
-        <a class="btn"  data-cta href="#oferta">Garantir minha skill</a>
+        <a class="btn"  data-cta href="#oferta"><span class="btn__label">Garantir minha skill</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="ctaband__trust">R$37 · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
@@ -226,7 +228,7 @@
         <p class="ctaband__sub">Quanto antes instalar, mais vídeos saem editados no ritmo certo esta semana.</p>
       </div>
       <div class="ctaband__act">
-        <a class="btn"  data-cta href="#oferta">É pra mim, quero agora</a>
+        <a class="btn"  data-cta href="#oferta"><span class="btn__label">É pra mim, quero agora</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="ctaband__trust">R$37 · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
@@ -262,7 +264,7 @@
       
       <p class="offer__price">R$37</p>
       <p class="offer__note">pagamento único · sem mensalidade da skill</p>
-      <a class="btn"  data-cta href="#oferta">Quero editar mais rápido</a>
+      <a class="btn"  data-cta href="#oferta"><span class="btn__label">Quero editar mais rápido</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <ul class="badges"><li>Garantia de 7 dias</li><li>Acesso imediato por e-mail</li><li>Pix ou cartão</li></ul>
     </div>
   </div>
@@ -283,7 +285,7 @@
         <p class="ctaband__sub">Teste por 7 dias. Se não editar mais rápido, você pede e recebe 100% de volta.</p>
       </div>
       <div class="ctaband__act">
-        <a class="btn"  data-cta href="#oferta">Testar por 7 dias</a>
+        <a class="btn"  data-cta href="#oferta"><span class="btn__label">Testar por 7 dias</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="ctaband__trust">R$37 · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
@@ -308,7 +310,7 @@
 <section class="sec final">
   <div class="wrap center">
     <h2>Edite <span class="grad">mais rápido</span>, poste mais e deixe o braçal com a skill.</h2>
-    <a class="btn"  data-cta href="#oferta">Quero editar mais rápido</a>
+    <a class="btn"  data-cta href="#oferta"><span class="btn__label">Quero editar mais rápido</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <p class="price-line">R$37 · pagamento único · acesso imediato</p>
   </div>
 </section>
@@ -323,7 +325,7 @@
 </footer>
 
 <div class="sticky" data-sticky aria-hidden="true">
-  <div class="sticky__in"><span class="sticky__p">R$37<small>pagamento único</small></span><a tabindex="-1" class="btn"  data-cta href="#oferta">Quero editar mais rápido</a></div>
+  <div class="sticky__in"><span class="sticky__p">R$37<small>pagamento único</small></span><a tabindex="-1" class="btn"  data-cta href="#oferta"><span class="btn__label">Quero editar mais rápido</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </div>
 <script src="main.js" defer></script>
 </body>
