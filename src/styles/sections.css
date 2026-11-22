@@ -169,3 +169,20 @@
 .sticky__p small { font: 500 10px/1 var(--f-mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
 .sticky .btn { flex: 1; min-height: 52px; padding: 0 16px; font-size: 1rem; max-width: none; width: auto; }
 @media (min-width: 760px) { .sticky { display: none; } }
+
+/* Chamada de compra entre seções */
+.ctaband { padding-block: 8px 24px; }
+.ctaband__box {
+  display: grid; gap: 20px; padding: 24px 20px; border-radius: var(--r-lg);
+  background: linear-gradient(180deg, rgba(255, 138, 76, .07), rgba(255, 138, 76, .02)), var(--surface);
+  border: 1px solid rgba(255, 138, 76, .28);
+}
+.ctaband__title { font: 700 1.375rem/1.2 var(--f-display); letter-spacing: -.02em; text-wrap: balance; margin: 0 0 8px; max-width: 30ch; }
+.ctaband__sub { color: var(--muted); font-size: var(--fs-small); margin: 0; max-width: 52ch; }
+.ctaband__act { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.ctaband__act .btn { max-width: none; width: 100%; }
+.ctaband__trust { margin: 0; text-align: center; font: 500 11px/1.4 var(--f-mono); letter-spacing: 0; color: var(--muted); }
+@media (min-width: 860px) {
+  .ctaband__box { grid-template-columns: 1fr auto; align-items: center; gap: 40px; padding: 32px 36px; }
+  .ctaband__act { min-width: 320px; }
+}

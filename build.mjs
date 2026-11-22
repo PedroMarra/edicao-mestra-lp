@@ -10,7 +10,7 @@ const DIST = join(ROOT, 'dist');
 
 const site = (await import(pathToFileURL(join(SRC, 'config/site.mjs')))).default;
 const content = (await import(pathToFileURL(join(SRC, 'content/shared.mjs')))).default;
-const { registry, defaultOrder } = await import(pathToFileURL(join(SRC, 'sections/index.mjs')));
+const { registry, defaultOrder, ctaBand } = await import(pathToFileURL(join(SRC, 'sections/index.mjs')));
 const layout = (await import(pathToFileURL(join(SRC, 'layouts/page.mjs')))).default;
 
 rmSync(DIST, { recursive: true, force: true });
@@ -33,6 +33,7 @@ for (const file of readdirSync(join(SRC, 'variants')).filter((f) => f.endsWith('
   const c = { ...content, ...(v.content || {}) };
   const order = v.sections || defaultOrder;
   const body = order.map((name) => {
+    if (name.startsWith('cta:')) return ctaBand({ site, v, c }, name.slice(4));
     if (!registry[name]) throw new Error(`Seção desconhecida "${name}" em ${file}`);
     return registry[name]({ site, v, c });
   }).join('\n');

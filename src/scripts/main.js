@@ -21,20 +21,25 @@ const CHECKOUT_URL = '__CHECKOUT_URL__';
   }));
 
   // 3. Botão fixo no celular: aparece quando o botão do hero sai da tela
-  //    e some quando a caixa de oferta está visível.
+  //    e some quando a oferta ou uma chamada de compra está visível.
   const sticky = document.querySelector('[data-sticky]');
   const heroCta = document.getElementById('hero-cta');
   const offer = document.getElementById('oferta');
   if (sticky && heroCta && 'IntersectionObserver' in window) {
-    let heroOut = false, offerIn = false;
+    let heroOut = false;
+    const visible = new Set();
     const sync = () => {
-      const show = heroOut && !offerIn;
+      const show = heroOut && visible.size === 0;
       sticky.classList.toggle('is-on', show);
       sticky.setAttribute('aria-hidden', String(!show));
       sticky.querySelector('a').tabIndex = show ? 0 : -1;
     };
     new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting && e.boundingClientRect.top < 0; sync(); }).observe(heroCta);
-    if (offer) new IntersectionObserver(([e]) => { offerIn = e.isIntersecting; sync(); }, { threshold: 0.25 }).observe(offer);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      sync();
+    }, { threshold: 0.25 });
+    [offer, ...document.querySelectorAll('.ctaband')].filter(Boolean).forEach((el) => io.observe(el));
   }
 
   // 4. Timecode do hero acompanha o vídeo demo.

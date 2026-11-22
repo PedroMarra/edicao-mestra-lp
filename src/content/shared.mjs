@@ -63,5 +63,43 @@ export default {
     { q: 'E se eu não gostar?', a: () => 'Você tem 7 dias para pedir o reembolso pela plataforma de pagamento e recebe 100% do valor de volta.' },
   ],
 
+
+  // Chamadas de compra entre as seções. Cada uma responde à seção
+  // anterior e empurra para o checkout. Variantes podem sobrescrever
+  // qualquer chave com `ctas: { chave: {...} }`.
+  // Regra: urgência só com motivo real (sem contador falso, sem "últimas vagas").
+  ctas: {
+    pain: {
+      title: 'Seu próximo vídeo não precisa perder ninguém no segundo 3.',
+      sub: 'A skill corta silêncio, legenda e dá ritmo por você. Uma vez R$37, todos os vídeos depois disso.',
+      button: 'Quero vídeos que seguram',
+    },
+    how: {
+      title: 'Instala hoje. Edita o próximo vídeo já com a skill.',
+      sub: 'O acesso chega no seu e-mail logo depois do pagamento. No Pix, na hora.',
+      button: 'Quero começar agora',
+    },
+    beforeAfter: {
+      title: 'Esse "depois" pode ser o seu próximo vídeo.',
+      sub: 'Você paga uma vez e usa em todos os vídeos que editar.',
+      button: 'Quero esse resultado',
+    },
+    deliverables: {
+      title: 'Tudo isso por R$37. Uma vez só.',
+      sub: 'Sem mensalidade da skill. Menos do que custa uma hora sua presa na timeline.',
+      button: 'Garantir minha skill',
+    },
+    audience: {
+      title: 'Se você se viu na primeira coluna, ela foi feita para você.',
+      sub: 'Quanto antes instalar, mais vídeos saem editados no ritmo certo esta semana.',
+      button: 'É pra mim, quero agora',
+    },
+    guarantee: {
+      title: 'O risco fica com a gente.',
+      sub: 'Teste por 7 dias. Se não editar mais rápido, você pede e recebe 100% de volta.',
+      button: 'Testar por 7 dias',
+    },
+  },
+
   finalCta: 'Edite mais rápido, poste mais e deixe o braçal com a skill.',
 };
