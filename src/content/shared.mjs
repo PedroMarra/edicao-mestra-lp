@@ -38,11 +38,11 @@ export default {
   // Formato: { name: 'Nome', handle: '@perfil', text: '...', photo: 'depo-1.webp' }
   testimonials: [],
 
-  author: {
-    name: '',  // ex.: 'Pedro Marra'
-    bio: '',   // 2 linhas de quem você é
-    photo: 'autor.webp', // em assets/
-  },
+  // Quem criou. Foto em assets/ (WebP 4:5, ex.: 800×1000).
+  authors: [
+    { name: 'Pedro Marra', role: 'Cocriador da Edição Mestra', bio: '', photo: 'autor.webp' },
+    { name: 'Pietro Mota', role: 'Cocriador da Edição Mestra', bio: '', photo: 'pietro.webp' },
+  ],
 
   offer: {
     includes: ['Skill Edição Mestra', 'Guia de instalação passo a passo', 'Estilos de legenda e zoom', 'Atualizações da versão comprada'],
