@@ -137,14 +137,15 @@
     <p class="tc"><span>00:00:15:00</span> Antes e depois</p>
     <h2>O mesmo vídeo, <span class="grad">antes e depois</span>.</h2>
     <p class="bignum"><span><span class="fill">[PREENCHER: X horas]</span></span><i aria-hidden="true">→</i><span class="grad"><span class="fill">[PREENCHER: Y minutos]</span></span></p>
-    <div class="ba">
+    <p class="ba__hint">Dê play em um e os dois tocam juntos.</p>
+    <div class="ba" data-sync>
       <figure class="ba__item">
-        <figcaption><span class="tag">Antes</span> bruto, sem cortes</figcaption>
-        <div class="screen screen--flat"><div class="fill-block" style="aspect-ratio:9/16"><span>[PREENCHER: trecho cru, sem edição (assets/antes.mp4)]</span></div></div>
+        <figcaption><span class="tag">Antes</span> sem legenda, motion nem zoom</figcaption>
+        <div class="screen screen--flat"><video muted loop playsinline controls preload="metadata" poster="assets/antes-poster.webp" style="aspect-ratio:9/16" aria-label="trecho cru, sem edição"><source src="assets/antes.mp4" type="video/mp4"></video></div>
       </figure>
       <figure class="ba__item">
-        <figcaption><span class="tag tag--on">Depois</span> editado pela skill</figcaption>
-        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><div class="fill-block" style="aspect-ratio:9/16"><span>[PREENCHER: o mesmo trecho editado pela skill (assets/depois.mp4)]</span></div></div>
+        <figcaption><span class="tag tag--on">Depois</span> legendas, motion e zooms</figcaption>
+        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/depois-poster.webp" style="aspect-ratio:9/16" aria-label="o mesmo trecho editado pela skill"><source src="assets/depois.mp4" type="video/mp4"></video></div>
       </figure>
     </div>
   </div>

@@ -60,7 +60,7 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
   // 5. Vídeos fora da tela pausam (economiza bateria e dados).
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => entries.forEach(({ target, isIntersecting }) => {
-      if (!isIntersecting && !target.paused) target.pause();
+      if (!isIntersecting && !target.paused && !target.closest("[data-sync]")) target.pause();
     }));
     document.querySelectorAll('video').forEach((vid) => io.observe(vid));
   }
@@ -124,4 +124,17 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
       media.addEventListener('pointerleave', () => { screen.style.removeProperty('--ry'); screen.style.removeProperty('--rx'); });
     }
   }
+
+  // 9. Antes e depois sincronizados: play/pause/seek em um vale para os dois.
+  document.querySelectorAll('[data-sync]').forEach((group) => {
+    const vids = [...group.querySelectorAll('video')];
+    if (vids.length < 2) return;
+    let lock = false;
+    const each = (src, fn) => { if (lock) return; lock = true; vids.filter((v) => v !== src).forEach(fn); lock = false; };
+    vids.forEach((v) => {
+      v.addEventListener('play', () => each(v, (o) => { o.currentTime = v.currentTime; o.play().catch(() => {}); }));
+      v.addEventListener('pause', () => each(v, (o) => o.pause()));
+      v.addEventListener('seeked', () => each(v, (o) => { if (Math.abs(o.currentTime - v.currentTime) > 0.3) o.currentTime = v.currentTime; }));
+    });
+  });
 })();
