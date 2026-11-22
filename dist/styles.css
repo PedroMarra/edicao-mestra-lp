@@ -256,7 +256,16 @@ strong { font-weight: 600; }
 }
 @media (min-width: 760px) { .ba { grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; } }
 .ba__item { margin: 0; }
-.ba__hint { font: 500 var(--fs-label)/1.4 var(--f-mono); letter-spacing: .06em; color: var(--muted); margin: -24px 0 28px; }
+.ba__hint { font: 500 var(--fs-label)/1.4 var(--f-mono); letter-spacing: .06em; color: var(--muted); margin: 0 0 24px; }
+.ba-extra { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--line); }
+.ba-extra .tc { margin-bottom: 8px; }
+@media (max-width: 759px) {
+  .ba--proof { grid-template-columns: 1fr; gap: 36px; }
+  .ba--proof .phone { max-width: 280px; border-width: 8px; border-radius: 36px; }
+  .ba--proof .phone__notch { height: 18px; top: 8px; }
+  .ba--proof .ba__item figcaption { min-height: 0; font-size: var(--fs-small); }
+  .ba--proof .ba__item figcaption .tag { display: inline-block; margin: 0 8px 0 0; }
+}
 .ba video { width: 100%; height: auto; display: block; }
 .ba__item figcaption { color: var(--muted); font-size: var(--fs-small); margin-bottom: 14px; text-align: center; }
 .ba__item .screen { max-width: 300px; margin-inline: auto; }

@@ -23,8 +23,8 @@ export default {
   // Tempos medidos de verdade (vídeo real, com gravação).
   // Ex.: before: '3 horas', after: '12', afterUnit: 'minutos'.
   times: {
-    before: '',
-    after: '',
+    before: '3 horas',
+    after: '10',
     afterUnit: 'minutos',
     install: '', // minutos para instalar com o guia, ex.: '10'
   },

@@ -40,7 +40,7 @@
     <div class="hero__copy">
       <p class="eyebrow">Skill do Claude para editores</p>
       <h1>Editor que entrega em <span class="grad">24h</span> pode cobrar mais caro.</h1>
-      <!-- H1 alternativo para teste A/B: <h1>Corte o bruto em Y minutos, não numa tarde inteira.</h1> -->
+      <!-- H1 alternativo para teste A/B: <h1>Corte o bruto em 10 minutos, não numa tarde inteira.</h1> -->
       <p class="lead">Uma skill do Claude que faz o corte braçal, as legendas e os zooms direto no Premiere. Você entrega mais rápido e usa seu tempo no que o cliente paga: o criativo.</p>
       <ul class="chips" aria-label="O que a skill faz"><li>Cortes automáticos</li><li>Legendas</li><li>Zoom e ritmo</li></ul>
       <div class="hero__cta">
@@ -53,7 +53,7 @@
       <div class="screen">
         <div class="screen__bar" aria-hidden="true"><i></i><i></i><i></i><span>timeline · sequência 01</span></div>
         <div class="screen__body">
-          <div class="fill-block" style="aspect-ratio:16/9"><span>[PREENCHER: vídeo demo de 15–30s, Claude Code + Premiere editando (assets/demo.mp4)]</span></div>
+          <video autoplay muted loop playsinline preload="auto" poster="assets/demo-poster.webp" style="aspect-ratio:16/9" aria-label="Demonstração da Edição Mestra editando no Premiere"><source src="assets/demo.mp4" type="video/mp4"></video>
           <span class="screen__tc" aria-hidden="true" data-timecode>00:00:14:22</span>
           <span class="screen__scan" aria-hidden="true"></span>
         </div>
@@ -136,17 +136,31 @@
   <div class="wrap">
     <p class="tc"><span>00:00:15:00</span> Antes e depois</p>
     <h2>O mesmo vídeo, <span class="grad">antes e depois</span>.</h2>
-    <p class="bignum"><span><span class="fill">[PREENCHER: X horas]</span></span><i aria-hidden="true">→</i><span class="grad"><span class="fill">[PREENCHER: Y minutos]</span></span></p>
-    <p class="ba__hint">Dê play em um e os dois tocam juntos.</p>
-    <div class="ba" data-sync>
+    <p class="bignum"><span>3 horas</span><i aria-hidden="true">→</i><span class="grad">10 minutos</span></p>
+    <div class="ba ba--proof">
       <figure class="ba__item">
-        <figcaption><span class="tag">Antes</span> sem legenda, motion nem zoom</figcaption>
-        <div class="screen screen--flat"><video muted loop playsinline controls preload="metadata" poster="assets/antes-poster.webp" style="aspect-ratio:9/16" aria-label="trecho cru, sem edição"><source src="assets/antes.mp4" type="video/mp4"></video></div>
+        <figcaption><span class="tag">Antes e depois</span> o mesmo vídeo, lado a lado</figcaption>
+        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/prova-poster.webp" style="aspect-ratio:9/16" aria-label="antes e depois do mesmo vídeo"><source src="assets/prova.mp4" type="video/mp4"></video></div>
       </figure>
       <figure class="ba__item">
-        <figcaption><span class="tag tag--on">Depois</span> legendas, motion e zooms</figcaption>
-        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/depois-poster.webp" style="aspect-ratio:9/16" aria-label="o mesmo trecho editado pela skill"><source src="assets/depois.mp4" type="video/mp4"></video></div>
+        <figcaption><span class="tag tag--on">Com a skill</span> pronto para postar em 10 minutos</figcaption>
+        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/resultado-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo final editado com a skill"><source src="assets/resultado.mp4" type="video/mp4"></video></div>
       </figure>
+    </div>
+
+    <div class="ba-extra">
+      <p class="tc"><span>+</span> Vídeo de cliente</p>
+      <p class="ba__hint">Dê play em um e os dois tocam juntos.</p>
+      <div class="ba" data-sync>
+        <figure class="ba__item">
+          <figcaption><span class="tag">Antes</span> sem legenda, motion nem zoom</figcaption>
+          <div class="screen screen--flat"><video muted loop playsinline controls preload="metadata" poster="assets/cliente-antes-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo de cliente sem edição"><source src="assets/cliente-antes.mp4" type="video/mp4"></video></div>
+        </figure>
+        <figure class="ba__item">
+          <figcaption><span class="tag tag--on">Depois</span> legendas, motion e zooms</figcaption>
+          <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/cliente-depois-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo de cliente editado"><source src="assets/cliente-depois.mp4" type="video/mp4"></video></div>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
