@@ -24,7 +24,7 @@ export const priceLine = (site) =>
 /** Rótulo de seção em timecode. */
 export const tc = (n, label) => {
   const s = String(n).padStart(2, '0');
-  return `<p class="tc"><span>00:00:${s}:00</span> ${label}</p>`;
+  return `<p class="tc"><span data-tc="${n}">00:00:${s}:00</span> ${label}</p>`;
 };
 
 /** Vídeo se o arquivo existir em assets/, senão o bloco [PREENCHER].

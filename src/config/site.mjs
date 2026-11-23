@@ -21,6 +21,16 @@ export default {
     access: 'acesso imediato',
   },
 
+  // Prazo REAL da oferta (contador regressivo na caixa de preço).
+  // Vazio = sem contador. Só preencha se o preço/bônus mudar de verdade
+  // nessa data e for igual para todo mundo (CDC art. 37).
+  // Formato: '2026-12-07T23:59:00-03:00' (horário de Brasília).
+  // Depois do prazo o contador some sozinho; troque o preço aqui.
+  deadline: {
+    until: '',
+    label: 'Preço de lançamento termina em',
+  },
+
   // Tempos medidos de verdade (vídeo real, com gravação).
   // Ex.: before: '3 horas', after: '12', afterUnit: 'minutos'.
   times: {

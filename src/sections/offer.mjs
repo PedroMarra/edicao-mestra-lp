@@ -5,6 +5,7 @@ export default ({ site, c, v }) => `
   <div class="wrap">
     <div class="offer__box">
       ${tc(40, 'Oferta')}
+      ${site.deadline?.until ? `<p class="offer__clock" data-deadline="${site.deadline.until}" hidden>${site.deadline.label} <span data-clock>--</span></p>` : ''}
       <h2>${site.brand}</h2>
       <ul class="checks">${c.offer.includes.map((x) => `<li>${x}</li>`).join('')}</ul>
       ${site.price.anchor ? `<p class="offer__anchor">de <s>${site.price.anchor}</s> por</p>` : ''}

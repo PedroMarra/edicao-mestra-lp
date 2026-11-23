@@ -72,6 +72,50 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
     }
   }
 
+  // 4a. Rótulos de seção (00:00:40:00) rodam como timecode de vídeo
+  //     enquanto estão na tela. Só estética: conta para frente, não é prazo.
+  const labels = document.querySelectorAll('[data-tc]');
+  if (labels.length && !reduce && 'IntersectionObserver' in window) {
+    const pad = (n) => String(n).padStart(2, '0');
+    const on = new Map();
+    let raf = 0;
+    const tick = (now) => {
+      on.forEach((start, el) => {
+        const f = Math.floor((now - start) / (1000 / 30));
+        const s = +el.dataset.tc + Math.floor(f / 30);
+        el.textContent = `00:${pad(Math.floor(s / 60))}:${pad(s % 60)}:${pad(f % 30)}`;
+      });
+      raf = on.size ? requestAnimationFrame(tick) : 0;
+    };
+    const lo = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) on.set(target, performance.now());
+        else on.delete(target);
+      });
+      if (on.size && !raf) raf = requestAnimationFrame(tick);
+    });
+    labels.forEach((el) => lo.observe(el));
+  }
+
+  // 4a2. Contador regressivo da oferta: só existe se houver prazo real
+  //      em site.mjs (deadline.until). Mesmo prazo para todo mundo;
+  //      quando acaba, o contador some.
+  const clockBox = document.querySelector('[data-deadline]');
+  if (clockBox) {
+    const end = Date.parse(clockBox.dataset.deadline);
+    const out = clockBox.querySelector('[data-clock]');
+    const pad = (n) => String(n).padStart(2, '0');
+    const draw = () => {
+      const left = end - Date.now();
+      if (!(left > 0)) { clockBox.hidden = true; return false; }
+      const s = Math.floor(left / 1000), d = Math.floor(s / 86400);
+      out.textContent = `${d ? d + 'd ' : ''}${pad(Math.floor(s / 3600) % 24)}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}`;
+      clockBox.hidden = false;
+      return true;
+    };
+    if (draw()) { const id = setInterval(() => { if (!draw()) clearInterval(id); }, 1000); }
+  }
+
   // 4b. Posters dos outros vídeos só carregam perto da tela.
   const lazyPosters = document.querySelectorAll('video[data-poster]');
   if ('IntersectionObserver' in window) {
