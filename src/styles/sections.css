@@ -133,7 +133,7 @@
 
 /* Quem criou */
 .authors { display: grid; gap: 14px; }
-@media (min-width: 700px) { .authors { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+@media (min-width: 700px) { .authors { grid-template-columns: repeat(2, 1fr); gap: 20px; } .authors--solo { grid-template-columns: 1fr; max-width: 720px; } .authors--solo .person { grid-template-columns: 240px 1fr; gap: 32px; } }
 .person { padding: 12px; display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 16px; }
 @media (min-width: 700px) { .person { grid-template-columns: 170px 1fr; gap: 22px; } }
 .person__photo { aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--surface-2); }

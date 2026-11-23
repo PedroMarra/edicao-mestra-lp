@@ -40,8 +40,7 @@ export default {
 
   // Quem criou. Foto em assets/ (WebP 4:5, ex.: 800×1000).
   authors: [
-    { name: 'Pedro Marra', role: 'Cocriador da Edição Mestra', bio: '', photo: 'autor.webp' },
-    { name: 'Pietro Mota', role: 'Cocriador da Edição Mestra', bio: '', photo: 'pietro.webp' },
+    { name: 'Samuel Braga', role: 'Criador da Edição Mestra', bio: '', photo: 'autor.webp' },
   ],
 
   offer: {
