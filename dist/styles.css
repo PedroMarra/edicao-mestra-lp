@@ -1,3 +1,8 @@
+/* Fontes hospedadas no próprio site (sem ida ao Google): latin, com acentos. */
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(assets/fonts/inter.woff2) format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 700; font-display: swap; src: url(assets/fonts/space-grotesk-700.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/jetbrains-mono-500.woff2) format('woff2'); }
+
 /* ── Tokens da paleta N1 Aurora ──────────────────────────────
    Única fonte de cores, tipos e medidas. Troque aqui e a página
    inteira acompanha. Não use cores soltas nos outros arquivos. */
@@ -206,10 +211,12 @@ strong { font-weight: 600; }
 .tl__lane { position: relative; flex: 1; height: 100%; }
 .tl__lane i { position: absolute; top: 3px; bottom: 3px; border-radius: 4px; background: linear-gradient(100deg, rgba(255, 138, 76, .35), rgba(255, 94, 58, .25)); border: 1px solid rgba(255, 138, 76, .35); }
 .tl__track--a .tl__lane i { background: rgba(77, 157, 255, .14); border-color: rgba(77, 157, 255, .3); }
-.tl__head { position: absolute; top: 0; bottom: -4px; left: calc(var(--gutter) + 36px); width: 2px; background: var(--orange-2); box-shadow: 0 0 12px rgba(255, 94, 58, .7); animation: play 14s linear infinite; }
-.tl__head::before { content: ''; position: absolute; top: -2px; left: -5px; border: 6px solid transparent; border-top: 8px solid var(--orange-2); }
-@keyframes play { from { left: calc(var(--gutter) + 36px); } to { left: calc(100% - var(--gutter)); } }
-@media (prefers-reduced-motion: reduce) { .tl__head { left: 58%; } }
+.tl__head { position: absolute; top: 0; bottom: -4px; left: calc(var(--gutter) + 36px); right: var(--gutter); pointer-events: none; animation: play 14s linear infinite; will-change: transform; }
+.tl__head::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--orange-2); box-shadow: 0 0 12px rgba(255, 94, 58, .7); }
+.tl__head::before { content: ''; position: absolute; top: -2px; left: -5px; z-index: 1; border: 6px solid transparent; border-top: 8px solid var(--orange-2); }
+@keyframes play { from { transform: translateX(0); } to { transform: translateX(100%); } }
+.tl .wrap { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .tl__head { transform: translateX(55%); } }
 
 /* Dor */
 .pains { display: grid; gap: 4px; margin-top: 28px; }
@@ -222,7 +229,7 @@ strong { font-weight: 600; }
 .chart__axis text { fill: #8A90A8; font: 500 9px var(--f-mono); }
 .chart__mark { stroke: var(--orange-2); stroke-dasharray: 3 3; stroke-width: 1; }
 .chart__before { fill: none; stroke: var(--blue-dim); stroke-width: 2.5; stroke-dasharray: 5 4; }
-.chart__after { fill: none; stroke: var(--blue); stroke-width: 3; filter: drop-shadow(0 0 6px rgba(77, 157, 255, .6)); }
+.chart__after { fill: none; stroke: var(--blue); stroke-width: 3; }
 .chart figcaption { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font: 500 11px/1.2 var(--f-mono); color: var(--muted); }
 .chart figcaption em { margin-left: auto; font-style: normal; color: #8A90A8; }
 .lg::before { content: ''; display: inline-block; width: 16px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
@@ -313,7 +320,7 @@ strong { font-weight: 600; }
 @media (max-width: 699px) { .person__txt h3 { font-size: 1.1875rem; } }
 
 /* Oferta */
-.offer__box { position: relative; max-width: 520px; margin-inline: auto; text-align: center; background: rgba(17, 19, 27, .86); border: 1px solid var(--line); border-radius: 24px; padding: 40px 24px 32px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.offer__box { position: relative; max-width: 520px; margin-inline: auto; text-align: center; background: rgba(17, 19, 27, .94); border: 1px solid var(--line); border-radius: 24px; padding: 40px 24px 32px; }
 .offer__box h2 { margin-inline: auto; }
 .offer__box .checks { text-align: left; display: inline-block; margin: 8px 0 24px; }
 .offer__anchor { color: var(--muted); margin: 0 auto; }
@@ -354,7 +361,7 @@ strong { font-weight: 600; }
 @media (min-width: 760px) { .footer { padding-bottom: 48px; } }
 
 /* Botão fixo no celular */
-.sticky { position: fixed; inset: auto 0 0; z-index: 50; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom)); background: rgba(8, 9, 14, .92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .3s ease; }
+.sticky { position: fixed; inset: auto 0 0; z-index: 50; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom)); background: rgba(8, 9, 14, .97); border-top: 1px solid var(--line); transform: translateY(110%); will-change: transform; transition: transform .3s ease; }
 .sticky.is-on { transform: none; }
 .sticky__in { display: flex; align-items: center; gap: 14px; max-width: 520px; margin-inline: auto; }
 .sticky__p { font: 700 1.25rem/1 var(--f-display); display: flex; flex-direction: column; gap: 4px; white-space: nowrap; }
@@ -396,19 +403,19 @@ strong { font-weight: 600; }
 .progress i { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(var(--p, 0)); background: var(--grad-cta); box-shadow: 0 0 10px rgba(255, 106, 61, .7); }
 
 /* Entrada do hero (uma vez, em sequência) */
-@keyframes rise { from { opacity: 0; transform: translateY(18px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
-.hero .eyebrow, .hero h1, .hero .lead, .hero .chips, .hero__cta, .hero__media, .topbar__in { animation: rise var(--t-slow) var(--ease-out) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hero .eyebrow, .hero .lead, .hero .chips, .hero__cta, .hero__media, .topbar__in { animation: rise .6s var(--ease-out) both; }
+/* O título não anima: aparece no primeiro quadro (é o maior elemento da tela). */
 .topbar__in { animation-duration: .6s; }
-.hero .eyebrow { animation-delay: .05s; }
-.hero h1 { animation-delay: .12s; }
-.hero__cta { animation-delay: .24s; }
-.hero__media { animation-delay: .32s; }
-.hero .lead { animation-delay: .4s; }
-.hero .chips { animation-delay: .48s; }
+.hero__cta { animation-delay: .08s; }
+.hero__media { animation-delay: .14s; }
+.hero .lead { animation-delay: .2s; }
+.hero .chips { animation-delay: .26s; }
 
 /* Palavra em degradê com brilho lento */
-@keyframes sheen { to { background-position: 200% 50%; } }
-.grad { background-size: 200% 100%; background-image: linear-gradient(90deg, #FF8A4C, #4D9DFF, #FF8A4C); animation: sheen 8s linear infinite; }
+@keyframes sheen { from { background-position: 100% 50%; } to { background-position: 0% 50%; } }
+.grad { background-size: 200% 100%; background-image: linear-gradient(90deg, #FF8A4C, #4D9DFF, #FF8A4C); }
+.in .grad, .hero .grad { animation: sheen 2.4s var(--ease-io) .3s 1 both; }
 @supports (background: linear-gradient(90deg in oklch, red, blue)) {
   .grad { background-image: linear-gradient(90deg in oklch, #FF8A4C, #4D9DFF, #FF8A4C); }
 }
@@ -423,6 +430,7 @@ strong { font-weight: 600; }
 .btn__arrow { flex: none; transition: transform .35s var(--ease-out); }
 .btn:hover .btn__arrow, .btn:focus-visible .btn__arrow { transform: translateX(4px); }
 .btn::before { /* faixa de luz que atravessa o botão */
+  will-change: transform;
   content: ''; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .45) 50%, transparent 65%);
   transform: translateX(-120%); animation: sweep 5s var(--ease-io) 2s infinite;
@@ -451,8 +459,8 @@ strong { font-weight: 600; }
 .chips li:hover { background: rgba(77, 157, 255, .16); border-color: rgba(77, 157, 255, .6); transform: translateY(-1px); }
 
 /* Tela do hero: linha de leitura (playhead) varrendo o vídeo */
-.screen__scan { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: var(--orange-2); box-shadow: 0 0 14px 2px rgba(255, 94, 58, .55); animation: scan 6s var(--ease-io) infinite; pointer-events: none; }
-@keyframes scan { from { left: 0; } to { left: calc(100% - 2px); } }
+.screen__scan { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; will-change: transform; background: linear-gradient(90deg, transparent calc(100% - 3px), var(--orange-2) calc(100% - 3px)); animation: scan 6s var(--ease-io) infinite; pointer-events: none; transform: translateX(-100%); }
+@keyframes scan { to { transform: translateX(0); } }
 .screen { transition: transform .6s var(--ease-out), box-shadow .6s; }
 @media (hover: hover) and (min-width: 960px) {
   .hero__media { perspective: 1200px; }
@@ -491,8 +499,8 @@ strong { font-weight: 600; }
 .faq summary:hover { color: var(--blue); }
 
 /* Preço respira atrás */
-@keyframes breathe { 50% { opacity: .55; transform: scale(1.08); } }
-.offer__box::before { content: ''; position: absolute; inset: 20% 10%; z-index: -1; background: radial-gradient(closest-side, rgba(255, 106, 61, .25), transparent); filter: blur(30px); animation: breathe 6s ease-in-out infinite; pointer-events: none; }
+@keyframes breathe { 50% { opacity: .5; } }
+.offer__box::before { content: ''; position: absolute; inset: 0 -10%; z-index: -1; background: radial-gradient(closest-side, rgba(255, 106, 61, .22), transparent); animation: breathe 6s ease-in-out infinite; pointer-events: none; }
 
 /* Selo da garantia gira devagar */
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -503,3 +511,12 @@ strong { font-weight: 600; }
 .tl:hover .tl__lane i { filter: brightness(1.4); }
 
 @media (prefers-reduced-motion: reduce) { .screen__scan, .btn::before { display: none; } .js .reveal { opacity: 1; translate: none; } }
+
+/* Poster do vídeo do topo: aparece na hora e some quando o vídeo começa */
+.screen__body { position: relative; }
+.video-poster { position: absolute; inset: 0; transition: opacity .5s; }
+.video-poster img { width: 100%; height: 100%; object-fit: cover; }
+.is-playing .video-poster { opacity: 0; pointer-events: none; }
+
+/* Seções fora da tela não são desenhadas até chegar perto (rolagem mais leve) */
+.sec:not(.hero):not(.offer) { content-visibility: auto; contain-intrinsic-size: auto 900px; }

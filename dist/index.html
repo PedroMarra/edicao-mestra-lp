@@ -13,9 +13,10 @@
 <meta property="og:url" content="https://pedromarra.github.io/edicao-mestra-lp/"><link rel="canonical" href="https://pedromarra.github.io/edicao-mestra-lp/">
 <meta property="og:image" content="https://pedromarra.github.io/edicao-mestra-lp/assets/og.jpg"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308090E'/%3E%3Crect x='7' y='11' width='18' height='4' rx='1' fill='%23FF7A44'/%3E%3Crect x='7' y='18' width='12' height='4' rx='1' fill='%234D9DFF'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=swap">
+<link rel="preload" href="assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/demo-poster-480.webp" media="(max-width: 959px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/demo-poster.webp" media="(min-width: 960px)" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <!-- ── PIXELS ─────────────────────────────────────────────
      Cole os IDs em src/config/site.mjs (pixels.meta / pixels.tiktok)
@@ -53,7 +54,7 @@
       <div class="screen">
         <div class="screen__bar" aria-hidden="true"><i></i><i></i><i></i><span>timeline · sequência 01</span></div>
         <div class="screen__body">
-          <video autoplay muted loop playsinline preload="auto" poster="assets/demo-poster.webp" style="aspect-ratio:16/9" aria-label="Demonstração da Edição Mestra editando no Premiere"><source src="assets/demo.mp4" type="video/mp4"></video>
+          <video data-hero data-src="assets/demo.mp4" data-src-sm="assets/demo-480.mp4" muted loop playsinline preload="none" style="aspect-ratio:16/9" aria-label="Demonstração da Edição Mestra editando no Premiere"></video><picture class="video-poster"><source media="(max-width: 959px)" srcset="assets/demo-poster-480.webp"><img src="assets/demo-poster.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async"></picture>
           <span class="screen__tc" aria-hidden="true" data-timecode>00:00:14:22</span>
           <span class="screen__scan" aria-hidden="true"></span>
         </div>
@@ -145,11 +146,11 @@
     <div class="ba ba--proof">
       <figure class="ba__item">
         <figcaption><span class="tag">Antes e depois</span> o mesmo vídeo, lado a lado</figcaption>
-        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/prova-poster.webp" style="aspect-ratio:9/16" aria-label="antes e depois do mesmo vídeo"><source src="assets/prova.mp4" type="video/mp4"></video></div>
+        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="none" data-poster="assets/prova-poster.webp" style="aspect-ratio:9/16" aria-label="antes e depois do mesmo vídeo"><source src="assets/prova.mp4" type="video/mp4"></video></div>
       </figure>
       <figure class="ba__item">
         <figcaption><span class="tag tag--on">Com a skill</span> pronto para postar em 10 minutos</figcaption>
-        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/resultado-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo final editado com a skill"><source src="assets/resultado.mp4" type="video/mp4"></video></div>
+        <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="none" data-poster="assets/resultado-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo final editado com a skill"><source src="assets/resultado.mp4" type="video/mp4"></video></div>
       </figure>
     </div>
 
@@ -159,11 +160,11 @@
       <div class="ba" data-sync>
         <figure class="ba__item">
           <figcaption><span class="tag">Antes</span> sem legenda, motion nem zoom</figcaption>
-          <div class="screen screen--flat"><video muted loop playsinline controls preload="metadata" poster="assets/cliente-antes-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo de cliente sem edição"><source src="assets/cliente-antes.mp4" type="video/mp4"></video></div>
+          <div class="screen screen--flat"><video muted loop playsinline controls preload="none" data-poster="assets/cliente-antes-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo de cliente sem edição"><source src="assets/cliente-antes.mp4" type="video/mp4"></video></div>
         </figure>
         <figure class="ba__item">
           <figcaption><span class="tag tag--on">Depois</span> legendas, motion e zooms</figcaption>
-          <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="metadata" poster="assets/cliente-depois-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo de cliente editado"><source src="assets/cliente-depois.mp4" type="video/mp4"></video></div>
+          <div class="phone"><span class="phone__notch" aria-hidden="true"></span><video muted loop playsinline controls preload="none" data-poster="assets/cliente-depois-poster.webp" style="aspect-ratio:9/16" aria-label="vídeo de cliente editado"><source src="assets/cliente-depois.mp4" type="video/mp4"></video></div>
         </figure>
       </div>
     </div>
@@ -270,7 +271,7 @@
           <h3>Samuel Braga</h3>
           <p class="person__role">Criador da Edição Mestra</p>
           <a class="person__handle" href="https://www.instagram.com/samuelrmbraga/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>@samuelrmbraga</a>
-          <p><span class="fill">[PREENCHER: 2 linhas sobre Samuel]</span></p>
+          <p>Piauiense criado em Brasília, é videomaker desde os 18 anos. Começou fotografando na igreja e hoje tem a IA como braço direito no processo criativo e profissional. A Edição Mestra é esse jeito de trabalhar, empacotado para você usar.</p>
         </div>
       </article>
     </div>

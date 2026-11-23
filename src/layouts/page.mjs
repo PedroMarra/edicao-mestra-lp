@@ -27,9 +27,10 @@ export default ({ site, v, body }) => {
 ${url ? `<meta property="og:url" content="${url}"><link rel="canonical" href="${url}">` : '<!-- [PREENCHER: domínio em src/config/site.mjs para og:url e canonical] -->'}
 ${og}
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308090E'/%3E%3Crect x='7' y='11' width='18' height='4' rx='1' fill='%23FF7A44'/%3E%3Crect x='7' y='18' width='12' height='4' rx='1' fill='%234D9DFF'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=swap">
+<link rel="preload" href="assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/demo-poster-480.webp" media="(max-width: 959px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/demo-poster.webp" media="(min-width: 960px)" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <!-- ── PIXELS ─────────────────────────────────────────────
      Cole os IDs em src/config/site.mjs (pixels.meta / pixels.tiktok)

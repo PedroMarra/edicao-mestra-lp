@@ -40,7 +40,8 @@ export default {
 
   // Quem criou. Foto em assets/ (WebP 4:5, ex.: 800×1000).
   authors: [
-    { name: 'Samuel Braga', role: 'Criador da Edição Mestra', handle: 'samuelrmbraga', bio: '', photo: 'autor.webp' },
+    { name: 'Samuel Braga', role: 'Criador da Edição Mestra', handle: 'samuelrmbraga',
+      bio: 'Piauiense criado em Brasília, é videomaker desde os 18 anos. Começou fotografando na igreja e hoje tem a IA como braço direito no processo criativo e profissional. A Edição Mestra é esse jeito de trabalhar, empacotado para você usar.', photo: 'autor.webp' },
   ],
 
   offer: {

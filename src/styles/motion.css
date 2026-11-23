@@ -15,19 +15,19 @@
 .progress i { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(var(--p, 0)); background: var(--grad-cta); box-shadow: 0 0 10px rgba(255, 106, 61, .7); }
 
 /* Entrada do hero (uma vez, em sequência) */
-@keyframes rise { from { opacity: 0; transform: translateY(18px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
-.hero .eyebrow, .hero h1, .hero .lead, .hero .chips, .hero__cta, .hero__media, .topbar__in { animation: rise var(--t-slow) var(--ease-out) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hero .eyebrow, .hero .lead, .hero .chips, .hero__cta, .hero__media, .topbar__in { animation: rise .6s var(--ease-out) both; }
+/* O título não anima: aparece no primeiro quadro (é o maior elemento da tela). */
 .topbar__in { animation-duration: .6s; }
-.hero .eyebrow { animation-delay: .05s; }
-.hero h1 { animation-delay: .12s; }
-.hero__cta { animation-delay: .24s; }
-.hero__media { animation-delay: .32s; }
-.hero .lead { animation-delay: .4s; }
-.hero .chips { animation-delay: .48s; }
+.hero__cta { animation-delay: .08s; }
+.hero__media { animation-delay: .14s; }
+.hero .lead { animation-delay: .2s; }
+.hero .chips { animation-delay: .26s; }
 
 /* Palavra em degradê com brilho lento */
-@keyframes sheen { to { background-position: 200% 50%; } }
-.grad { background-size: 200% 100%; background-image: linear-gradient(90deg, #FF8A4C, #4D9DFF, #FF8A4C); animation: sheen 8s linear infinite; }
+@keyframes sheen { from { background-position: 100% 50%; } to { background-position: 0% 50%; } }
+.grad { background-size: 200% 100%; background-image: linear-gradient(90deg, #FF8A4C, #4D9DFF, #FF8A4C); }
+.in .grad, .hero .grad { animation: sheen 2.4s var(--ease-io) .3s 1 both; }
 @supports (background: linear-gradient(90deg in oklch, red, blue)) {
   .grad { background-image: linear-gradient(90deg in oklch, #FF8A4C, #4D9DFF, #FF8A4C); }
 }
@@ -42,6 +42,7 @@
 .btn__arrow { flex: none; transition: transform .35s var(--ease-out); }
 .btn:hover .btn__arrow, .btn:focus-visible .btn__arrow { transform: translateX(4px); }
 .btn::before { /* faixa de luz que atravessa o botão */
+  will-change: transform;
   content: ''; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .45) 50%, transparent 65%);
   transform: translateX(-120%); animation: sweep 5s var(--ease-io) 2s infinite;
@@ -70,8 +71,8 @@
 .chips li:hover { background: rgba(77, 157, 255, .16); border-color: rgba(77, 157, 255, .6); transform: translateY(-1px); }
 
 /* Tela do hero: linha de leitura (playhead) varrendo o vídeo */
-.screen__scan { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: var(--orange-2); box-shadow: 0 0 14px 2px rgba(255, 94, 58, .55); animation: scan 6s var(--ease-io) infinite; pointer-events: none; }
-@keyframes scan { from { left: 0; } to { left: calc(100% - 2px); } }
+.screen__scan { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; will-change: transform; background: linear-gradient(90deg, transparent calc(100% - 3px), var(--orange-2) calc(100% - 3px)); animation: scan 6s var(--ease-io) infinite; pointer-events: none; transform: translateX(-100%); }
+@keyframes scan { to { transform: translateX(0); } }
 .screen { transition: transform .6s var(--ease-out), box-shadow .6s; }
 @media (hover: hover) and (min-width: 960px) {
   .hero__media { perspective: 1200px; }
@@ -110,8 +111,8 @@
 .faq summary:hover { color: var(--blue); }
 
 /* Preço respira atrás */
-@keyframes breathe { 50% { opacity: .55; transform: scale(1.08); } }
-.offer__box::before { content: ''; position: absolute; inset: 20% 10%; z-index: -1; background: radial-gradient(closest-side, rgba(255, 106, 61, .25), transparent); filter: blur(30px); animation: breathe 6s ease-in-out infinite; pointer-events: none; }
+@keyframes breathe { 50% { opacity: .5; } }
+.offer__box::before { content: ''; position: absolute; inset: 0 -10%; z-index: -1; background: radial-gradient(closest-side, rgba(255, 106, 61, .22), transparent); animation: breathe 6s ease-in-out infinite; pointer-events: none; }
 
 /* Selo da garantia gira devagar */
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -122,3 +123,12 @@
 .tl:hover .tl__lane i { filter: brightness(1.4); }
 
 @media (prefers-reduced-motion: reduce) { .screen__scan, .btn::before { display: none; } .js .reveal { opacity: 1; translate: none; } }
+
+/* Poster do vídeo do topo: aparece na hora e some quando o vídeo começa */
+.screen__body { position: relative; }
+.video-poster { position: absolute; inset: 0; transition: opacity .5s; }
+.video-poster img { width: 100%; height: 100%; object-fit: cover; }
+.is-playing .video-poster { opacity: 0; pointer-events: none; }
+
+/* Seções fora da tela não são desenhadas até chegar perto (rolagem mais leve) */
+.sec:not(.hero):not(.offer) { content-visibility: auto; contain-intrinsic-size: auto 900px; }

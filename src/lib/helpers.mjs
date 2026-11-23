@@ -27,16 +27,22 @@ export const tc = (n, label) => {
   return `<p class="tc"><span>00:00:${s}:00</span> ${label}</p>`;
 };
 
-/** Vídeo se o arquivo existir em assets/, senão o bloco [PREENCHER]. */
-export const video = ({ file, poster, desc, ratio = '16/9', hero = false, label = '' }) => {
+/** Vídeo se o arquivo existir em assets/, senão o bloco [PREENCHER].
+ *  Nada de vídeo baixa no carregamento: o do hero entra depois que a página
+ *  abre (main.js), e os outros só baixam no play. O poster carrega perto da tela. */
+export const video = ({ file, poster, desc, ratio = '16/9', hero = false, label = '', small = '', smallPoster = '' }) => {
   if (!hasAsset(file)) return fillBlock(`${desc} (assets/${file})`, ratio);
-  const posterAttr = hasAsset(poster) ? ` poster="assets/${poster}"` : '';
   const vtt = file.replace(/\.mp4$/, '.vtt');
   const track = hasAsset(vtt) ? `<track kind="captions" srclang="pt-BR" label="Português" src="assets/${vtt}" default>` : '';
-  const attrs = hero
-    ? 'autoplay muted loop playsinline preload="auto"'
-    : 'muted loop playsinline controls preload="metadata"';
-  return `<video ${attrs}${posterAttr} style="aspect-ratio:${ratio}" aria-label="${label || desc}"><source src="assets/${file}" type="video/mp4">${track}</video>`;
+  const aria = `aria-label="${label || desc}"`;
+  if (hero) {
+    const lg = `assets/${file}`, sm = hasAsset(small) ? `assets/${small}` : lg;
+    const pLg = hasAsset(poster) ? `assets/${poster}` : '', pSm = hasAsset(smallPoster) ? `assets/${smallPoster}` : pLg;
+    return `<video data-hero data-src="${lg}" data-src-sm="${sm}" muted loop playsinline preload="none" style="aspect-ratio:${ratio}" ${aria}></video>`
+      + (pLg ? `<picture class="video-poster"><source media="(max-width: 959px)" srcset="${pSm}"><img src="${pLg}" alt="" width="1280" height="720" fetchpriority="high" decoding="async"></picture>` : '');
+  }
+  const posterAttr = hasAsset(poster) ? ` data-poster="assets/${poster}"` : '';
+  return `<video muted loop playsinline controls preload="none"${posterAttr} style="aspect-ratio:${ratio}" ${aria}><source src="assets/${file}" type="video/mp4">${track}</video>`;
 };
 
 /** Imagem se existir, senão [PREENCHER]. */

@@ -46,21 +46,46 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
     [offer, ...document.querySelectorAll('.ctaband')].filter(Boolean).forEach((el) => io.observe(el));
   }
 
-  // 4. Timecode do hero acompanha o vídeo demo.
+  // 4. Vídeo do topo: só começa a baixar depois que a página abriu.
+  //    Celular baixa a versão menor. O poster aparece na hora.
+  const demo = document.querySelector('video[data-hero]');
   const tc = document.querySelector('[data-timecode]');
-  const demo = document.querySelector('.hero video');
-  if (tc && demo) {
-    const pad = (n) => String(Math.floor(n)).padStart(2, '0');
-    demo.addEventListener('timeupdate', () => {
-      const t = demo.currentTime;
-      tc.textContent = `00:${pad(t / 60)}:${pad(t % 60)}:${pad((t % 1) * 30)}`;
-    });
+  if (demo) {
+    const start = () => {
+      const small = matchMedia('(max-width: 959px)').matches;
+      const slow = navigator.connection && (navigator.connection.saveData || /(^|-)2g/.test(navigator.connection.effectiveType || ''));
+      if (slow) return; // conexão muito lenta: fica só o poster
+      demo.src = small ? demo.dataset.srcSm : demo.dataset.src;
+      demo.addEventListener('playing', () => demo.parentElement.classList.add('is-playing'), { once: true });
+      if (!reduce) demo.play().catch(() => {});
+    };
+    if (document.readyState === 'complete') setTimeout(start, 200);
+    else addEventListener('load', () => setTimeout(start, 200), { once: true });
+    if (tc) {
+      const pad = (n) => String(Math.floor(n)).padStart(2, '0');
+      let lastTc = '';
+      demo.addEventListener('timeupdate', () => {
+        const t = demo.currentTime;
+        const txt = `00:${pad(t / 60)}:${pad(t % 60)}:${pad((t % 1) * 30)}`;
+        if (txt !== lastTc) { tc.textContent = txt; lastTc = txt; }
+      });
+    }
   }
+
+  // 4b. Posters dos outros vídeos só carregam perto da tela.
+  const lazyPosters = document.querySelectorAll('video[data-poster]');
+  if ('IntersectionObserver' in window) {
+    const po = new IntersectionObserver((entries) => entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) { target.poster = target.dataset.poster; po.unobserve(target); }
+    }), { rootMargin: '600px 0px' });
+    lazyPosters.forEach((v) => po.observe(v));
+  } else lazyPosters.forEach((v) => { v.poster = v.dataset.poster; });
 
   // 5. Vídeos fora da tela pausam (economiza bateria e dados).
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => entries.forEach(({ target, isIntersecting }) => {
       if (!isIntersecting && !target.paused && !target.closest("[data-sync]")) target.pause();
+      else if (isIntersecting && target.hasAttribute('data-hero') && target.src && !reduce) target.play().catch(() => {});
     }));
     document.querySelectorAll('video').forEach((vid) => io.observe(vid));
   }
@@ -96,11 +121,17 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
   if (rec && !reduce) {
+    // REC conta só enquanto o topo está visível e a aba está aberta.
     const t0 = performance.now(), p2 = (n) => String(n).padStart(2, '0');
-    setInterval(() => {
+    let recOn = true, timer = 0;
+    const tickRec = () => {
       const t = (performance.now() - t0) / 1000;
       rec.textContent = `00:${p2(Math.floor(t / 60))}:${p2(Math.floor(t % 60))}:${p2(Math.floor((t % 1) * 30))}`;
-    }, 1000 / 15);
+    };
+    const runRec = () => { clearInterval(timer); if (recOn && !document.hidden) timer = setInterval(tickRec, 100); };
+    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { recOn = e.isIntersecting; runRec(); }).observe(rec);
+    document.addEventListener('visibilitychange', runRec);
+    runRec();
   }
 
   // 8. Luz que segue o cursor (botões e cards) e tela do hero em 3D.
