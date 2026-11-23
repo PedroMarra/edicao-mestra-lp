@@ -6,7 +6,7 @@ Site estático, leve e mobile-first. Um build de ~100 linhas em Node (sem depend
 site/
 ├── build.mjs              ← gera dist/ (node build.mjs)
 ├── src/
-│   ├── config/site.mjs    ← checkout, preço, tempos, requisitos, pixels, rodapé
+│   ├── config/site.mjs    ← checkout (Cackto), preço, tempos, requisitos, pixels, rodapé
 │   ├── content/shared.mjs ← textos comuns: passos, pacote, FAQ, depoimentos, autor, oferta
 │   ├── variants/          ← UMA página por arquivo (hero + dor + meta)
 │   │   ├── creator.mjs    → dist/index.html      (criativo B)
@@ -40,7 +40,7 @@ Depois de qualquer mudança: `node build.mjs`. Ele lista no terminal todos os `[
 - **Vercel (principal):** importe o repositório em vercel.com → Add New → Project. O `vercel.json` já manda rodar `node build.mjs` e publicar `dist/`. O endereço grátis `*.vercel.app` é detectado sozinho no build (variável `VERCEL_PROJECT_PRODUCTION_URL`), então o link de compartilhamento sai certo sem mexer em nada.
 - **GitHub Pages (reserva):** o workflow em `.github/workflows/pages.yml` publica a cada push em `main`.
 - **Domínio próprio depois:** adicione em Vercel → Settings → Domains. Para forçar um endereço no build, defina `SITE_URL` nas variáveis de ambiente.
-- Endereços: `/` = creator, `/freelancer` = freelancer, `/termos` e `/privacidade`. Use um link por criativo no anúncio, com UTMs (ex.: `?utm_source=meta&utm_campaign=criativo-b`). Os UTMs (e `src`/`sck` da Hotmart) passam para o checkout.
+- Endereços: `/` = creator, `/freelancer` = freelancer, `/termos` e `/privacidade`. Use um link por criativo no anúncio, com UTMs (ex.: `?utm_source=meta&utm_campaign=criativo-b`). Os UTMs (e `src`/`sck`) passam para o checkout da Cackto, que mostra a origem de cada venda.
 
 ## Regras da marca (não quebre)
 

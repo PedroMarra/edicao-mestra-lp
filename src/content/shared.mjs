@@ -51,7 +51,7 @@ export default {
 
   guarantee: {
     title: 'Teste por 7 dias.',
-    text: 'Se não editar mais rápido, devolvemos 100% do valor. É só pedir pela plataforma de pagamento, sem perguntas. Esse direito é seu por lei (art. 49 do CDC), e a gente prefere deixar isso claro antes da compra.',
+    text: 'Se não editar mais rápido, devolvemos 100% do valor. É só pedir pela Cackto, sem perguntas. Esse direito é seu por lei (art. 49 do CDC), e a gente prefere deixar isso claro antes da compra.',
   },
 
   faq: [
@@ -59,8 +59,8 @@ export default {
     { q: 'Preciso pagar o Claude?', a: (s, f) => `Sim. O Claude Code exige um plano pago do Claude: ${f(s.requirements.claudePlan, 'qual plano e quanto custa')}. A Edição Mestra é paga uma vez só; a assinatura do Claude é à parte.` },
     { q: 'Funciona em qual versão do Premiere?', a: (s, f) => `${f(s.requirements.premiereVersion, 'versão do Premiere testada')}.` },
     { q: 'Funciona no Mac e no Windows?', a: (s, f) => `${f(s.requirements.os, 'sistemas testados')}.` },
-    { q: 'Como recebo o acesso?', a: () => 'Logo depois do pagamento aprovado você recebe um e-mail com o acesso à área de membros, o download da skill e o guia de instalação. No Pix, a aprovação é na hora.' },
-    { q: 'E se eu não gostar?', a: () => 'Você tem 7 dias para pedir o reembolso pela plataforma de pagamento e recebe 100% do valor de volta.' },
+    { q: 'Como recebo o acesso?', a: () => 'Logo depois do pagamento aprovado você recebe um e-mail da Cackto com o acesso à área de membros, o download da skill e o guia de instalação. No Pix, a aprovação é na hora.' },
+    { q: 'E se eu não gostar?', a: () => 'Você tem 7 dias para pedir o reembolso pela Cackto e recebe 100% do valor de volta.' },
   ],
 
 

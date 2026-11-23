@@ -8,7 +8,8 @@ export default {
   brand: 'Edição Mestra',
   domain: 'https://pedromarra.github.io/edicao-mestra-lp', // trocar pelo domínio próprio quando comprar (usado no Open Graph)
 
-  // Checkout (Hotmart ou Kiwify) com o order bump já configurado.
+  // Link do checkout da Cackto (ex.: https://pay.cackto.com.br/xxxxx),
+  // com o order bump já configurado lá dentro.
   // Todos os botões apontam para cá e herdam os UTMs da página.
   checkoutUrl: '',
 
