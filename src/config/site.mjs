@@ -14,7 +14,11 @@ export default {
   checkoutUrl: '',
 
   price: {
-    value: 'R$37',
+    value: 'R$36,99',
+    // Preço que passa a valer DEPOIS do prazo (deadline.until). Precisa ser
+    // cobrado de verdade a partir dessa data (troque também na Cackto).
+    // Vazio = sem bloco de lançamento.
+    after: 'R$67',
     // Só preencha se o preço "de" existiu de verdade (CDC). Senão, deixe ''.
     anchor: '',
     note: 'pagamento único',
@@ -27,8 +31,8 @@ export default {
   // Formato: '2026-12-07T23:59:00-03:00' (horário de Brasília).
   // Depois do prazo o contador some sozinho; troque o preço aqui.
   deadline: {
-    until: '',
-    label: 'Preço de lançamento termina em',
+    until: '2026-11-30T23:59:00-03:00',
+    label: 'Esse preço acaba em',
   },
 
   // Tempos medidos de verdade (vídeo real, com gravação).

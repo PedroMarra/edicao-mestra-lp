@@ -20,8 +20,8 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
   // 2. Pixel: InitiateCheckout no clique.
   buttons.forEach((a) => a.addEventListener('click', () => {
     const variant = document.body.dataset.variant;
-    try { window.fbq && window.fbq('track', 'InitiateCheckout', { content_name: 'Edição Mestra', value: 37, currency: 'BRL', variant }); } catch (e) {}
-    try { window.ttq && window.ttq.track('InitiateCheckout', { content_name: 'Edição Mestra', value: 37, currency: 'BRL' }); } catch (e) {}
+    try { window.fbq && window.fbq('track', 'InitiateCheckout', { content_name: 'Edição Mestra', value: 36.99, currency: 'BRL', variant }); } catch (e) {}
+    try { window.ttq && window.ttq.track('InitiateCheckout', { content_name: 'Edição Mestra', value: 36.99, currency: 'BRL' }); } catch (e) {}
   }));
 
   // 3. Botão fixo no celular: aparece quando o botão do hero sai da tela
@@ -97,23 +97,41 @@ const CHECKOUT_URL = '[PREENCHER: link do checkout]';
     labels.forEach((el) => lo.observe(el));
   }
 
-  // 4a2. Contador regressivo da oferta: só existe se houver prazo real
-  //      em site.mjs (deadline.until). Mesmo prazo para todo mundo;
-  //      quando acaba, o contador some.
+  // 4a2. Preço de lançamento: contador até o prazo REAL de site.mjs
+  //      (deadline.until), igual para todo mundo. Quando o prazo acaba,
+  //      tudo que é [data-launch] some e [data-launch-off] aparece.
   const clockBox = document.querySelector('[data-deadline]');
   if (clockBox) {
     const end = Date.parse(clockBox.dataset.deadline);
-    const out = clockBox.querySelector('[data-clock]');
+    const seg = {}; ['d', 'h', 'm', 's'].forEach((k) => { seg[k] = clockBox.querySelector(`[data-clock-${k}]`); });
     const pad = (n) => String(n).padStart(2, '0');
+    const over = () => {
+      document.querySelectorAll('[data-launch]').forEach((el) => { el.hidden = true; });
+      document.querySelectorAll('[data-launch-off]').forEach((el) => { el.hidden = false; });
+    };
+    let prev = {};
     const draw = () => {
       const left = end - Date.now();
-      if (!(left > 0)) { clockBox.hidden = true; return false; }
-      const s = Math.floor(left / 1000), d = Math.floor(s / 86400);
-      out.textContent = `${d ? d + 'd ' : ''}${pad(Math.floor(s / 3600) % 24)}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}`;
-      clockBox.hidden = false;
+      if (!(left > 0)) { over(); return false; }
+      const s = Math.floor(left / 1000);
+      const val = { d: pad(Math.floor(s / 86400)), h: pad(Math.floor(s / 3600) % 24), m: pad(Math.floor(s / 60) % 60), s: pad(s % 60) };
+      for (const k in val) if (val[k] !== prev[k] && seg[k]) {
+        seg[k].textContent = val[k];
+        if (!reduce && prev[k]) { seg[k].classList.remove('tick'); void seg[k].offsetWidth; seg[k].classList.add('tick'); }
+      }
+      prev = val;
       return true;
     };
-    if (draw()) { const id = setInterval(() => { if (!draw()) clearInterval(id); }, 1000); }
+    if (draw()) {
+      let id = 0;
+      const run = () => { if (!id) id = setInterval(() => { if (!draw()) { clearInterval(id); id = 0; } }, 1000); };
+      const stop = () => { clearInterval(id); id = 0; };
+      // Só anima com a caixa na tela e a aba visível.
+      let vis = false;
+      if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { vis = e.isIntersecting; vis && !document.hidden ? (draw(), run()) : stop(); }).observe(clockBox);
+      else run();
+      document.addEventListener('visibilitychange', () => { document.hidden || !vis ? stop() : (draw() && run()); });
+    }
   }
 
   // 4b. Posters dos outros vídeos só carregam perto da tela.

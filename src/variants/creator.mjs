@@ -6,7 +6,7 @@ export default {
   out: 'index.html',
   meta: {
     title: 'Edição Mestra · Seu vídeo com ritmo, editado em minutos',
-    description: 'Skill para usar com o Claude que corta, legenda e dá ritmo ao seu vídeo direto no Premiere. R$37, pagamento único.',
+    description: 'Skill para usar com o Claude que corta, legenda e dá ritmo ao seu vídeo direto no Premiere. R$36,99, pagamento único.',
   },
   hero: {
     eyebrow: 'Skill do Claude para Premiere',

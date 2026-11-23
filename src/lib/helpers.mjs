@@ -18,8 +18,31 @@ export const join_ = (arr, fn) => arr.map(fn).join('');
 export const cta = (site, label, id = '') =>
   `<a class="btn" ${id ? `id="${id}"` : ''} data-cta href="${site.checkoutUrl || '#oferta'}"><span class="btn__label">${label}</span><svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
 
-export const priceLine = (site) =>
-  `<p class="price-line">${site.price.value} · ${site.price.note} · ${site.price.access}</p>`;
+/** "R$36,99" → 36.99 */
+export const money = (s) => +String(s).replace(/[^\d,]/g, '').replace(',', '.');
+export const brl = (n) => 'R$' + n.toFixed(2).replace('.', ',').replace(',00', '');
+
+/** Lançamento ativo = preço depois do prazo + prazo real definidos. */
+export const launch = (site) => {
+  const until = site.deadline?.until, after = site.price.after;
+  if (!until || !after) return null;
+  const now = money(site.price.value), later = money(after);
+  return {
+    until, after,
+    date: `${until.slice(8, 10)}/${until.slice(5, 7)}`,
+    hour: until.slice(11, 16).replace(':', 'h'),
+    save: brl(later - now),
+    off: Math.round((1 - now / later) * 100),
+  };
+};
+
+/** Trecho que some sozinho quando o prazo acaba (main.js). */
+export const onlyLaunch = (html) => `<span data-launch>${html}</span>`;
+
+export const priceLine = (site) => {
+  const L = launch(site);
+  return `<p class="price-line">${site.price.value}${L ? onlyLaunch(` no lançamento (depois ${L.after})`) : ''} · ${site.price.note} · ${site.price.access}</p>`;
+};
 
 /** Rótulo de seção em timecode. */
 export const tc = (n, label) => {

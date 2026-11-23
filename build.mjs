@@ -26,7 +26,8 @@ const cssOrder = ['tokens.css', 'base.css', 'components.css', 'sections.css', 'm
 writeFileSync(join(DIST, 'styles.css'), cssOrder.map((f) => readFileSync(join(SRC, 'styles', f), 'utf8')).join('\n'));
 
 // JS com o checkout injetado.
-const js = readFileSync(join(SRC, 'scripts/main.js'), 'utf8').replace('__CHECKOUT_URL__', site.checkoutUrl || '[PREENCHER: link do checkout]');
+const js = readFileSync(join(SRC, 'scripts/main.js'), 'utf8').replace('__CHECKOUT_URL__', site.checkoutUrl || '[PREENCHER: link do checkout]')
+  .replaceAll('__PRICE__', String(+site.price.value.replace(/[^\d,]/g, '').replace(',', '.')));
 writeFileSync(join(DIST, 'main.js'), js);
 
 // Assets (vídeos, imagens). Os READMEs não vão para produção.

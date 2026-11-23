@@ -1,10 +1,11 @@
 // Chamada de compra entre seções. Uso na ordem: 'cta:<chave>'
 // (a chave vem de content.ctas, ou de v.ctas na variante).
-import { cta } from '../lib/helpers.mjs';
+import { cta, launch, onlyLaunch } from '../lib/helpers.mjs';
 
 export default ({ site, c, v }, key) => {
   const d = { ...(c.ctas?.[key] || {}), ...(v.ctas?.[key] || {}) };
   if (!d.title) throw new Error(`CTA "${key}" sem texto em content.ctas`);
+  const L = launch(site);
   return `
 <aside class="ctaband" aria-label="Comprar a ${site.brand}">
   <div class="wrap">
@@ -15,7 +16,7 @@ export default ({ site, c, v }, key) => {
       </div>
       <div class="ctaband__act">
         ${cta(site, d.button || v.hero.cta)}
-        <p class="ctaband__trust">${site.price.value} · garantia de 7 dias · acesso imediato</p>
+        <p class="ctaband__trust">${site.price.value}${L ? onlyLaunch(` até ${L.date}`) : ''} · garantia de 7 dias · acesso imediato</p>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ export default {
   out: 'freelancer.html',
   meta: {
     title: 'Edição Mestra · Entregue em 24h sem virar a noite',
-    description: 'Skill para usar com o Claude que faz o corte braçal no Premiere. Entregue mais rápido e atenda mais clientes. R$37, pagamento único.',
+    description: 'Skill para usar com o Claude que faz o corte braçal no Premiere. Entregue mais rápido e atenda mais clientes. R$36,99, pagamento único.',
   },
   hero: {
     eyebrow: 'Skill do Claude para editores',
@@ -25,7 +25,7 @@ export default {
   ctas: {
     pain: {
       title: 'Cada bruto que a skill corta é uma entrega a mais na sua semana.',
-      sub: 'O braçal fica com ela. Você fica com o criativo, que é o que o cliente paga. R$37, uma vez.',
+      sub: 'O braçal fica com ela. Você fica com o criativo, que é o que o cliente paga. R$36,99, uma vez.',
       button: 'Quero entregar mais rápido',
     },
     beforeAfter: {
@@ -34,7 +34,7 @@ export default {
       button: 'Quero entregar assim',
     },
     deliverables: {
-      title: 'Tudo isso por R$37. Se paga no primeiro job.',
+      title: 'Tudo isso por R$36,99. Se paga no primeiro job.',
       sub: 'Sem mensalidade da skill. Menos do que você cobra por um corte simples.',
       button: 'Garantir minha skill',
     },

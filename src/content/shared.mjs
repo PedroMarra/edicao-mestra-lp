@@ -72,7 +72,7 @@ export default {
   ctas: {
     pain: {
       title: 'Seu próximo vídeo não precisa perder ninguém no segundo 3.',
-      sub: 'A skill corta silêncio, legenda e dá ritmo por você. Uma vez R$37, todos os vídeos depois disso.',
+      sub: 'A skill corta silêncio, legenda e dá ritmo por você. Uma vez R$36,99, todos os vídeos depois disso.',
       button: 'Quero vídeos que seguram',
     },
     how: {
@@ -86,7 +86,7 @@ export default {
       button: 'Quero esse resultado',
     },
     deliverables: {
-      title: 'Tudo isso por R$37. Uma vez só.',
+      title: 'Tudo isso por R$36,99. Uma vez só.',
       sub: 'Sem mensalidade da skill. Menos do que custa uma hora sua presa na timeline.',
       button: 'Garantir minha skill',
     },
