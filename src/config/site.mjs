@@ -26,7 +26,7 @@ export default {
     before: '3 horas',
     after: '10',
     afterUnit: 'minutos',
-    install: '', // minutos para instalar com o guia, ex.: '10'
+    install: '15', // média estimada para instalar com o guia (validar com compradores reais)
   },
 
   // Requisitos (aparecem no hero, na oferta e no FAQ).
@@ -42,11 +42,11 @@ export default {
     tiktok: '',
   },
 
+  // Termos e Privacidade são gerados pelo build (src/legal/) em
+  // termos.html e privacidade.html. Contato: Instagram e, se houver, e-mail.
   legal: {
-    owner: '',     // nome ou razão social
-    document: '',  // CPF ou CNPJ
-    termsUrl: '',
-    privacyUrl: '',
-    contactEmail: '',
+    instagram: 'samuelrmbraga',
+    contactEmail: '', // opcional, ex.: 'contato@edicaomestra.com.br'
+    updated: '23 de novembro de 2026',
   },
 };

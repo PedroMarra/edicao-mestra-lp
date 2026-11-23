@@ -11,7 +11,7 @@ export default {
     skillDef:
       'Uma skill é um pacote de instruções que ensina o Claude a fazer uma tarefa do jeito certo, sempre.',
     steps: [
-      { title: 'Instale a skill no Claude Code', text: (s, f) => `Siga o guia passo a passo. Leva ${f(s.times.install, 'tempo de instalação', ' minutos')}.` },
+      { title: 'Instale a skill no Claude Code', text: (s, f) => `Siga o guia passo a passo. Leva em média ${f(s.times.install, 'tempo de instalação', ' minutos')}.` },
       { title: 'Mande o vídeo cru e diga o estilo', text: () => 'Aponte o arquivo bruto e diga como quer: ritmo de Reels, podcast, aula. Ela corta silêncios e erros sozinha.' },
       { title: 'Abra a timeline pronta no Premiere', text: () => 'Os cortes, legendas e zooms já estão na timeline. Você revisa e ajusta o que quiser, como sempre fez.' },
     ],

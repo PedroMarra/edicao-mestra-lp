@@ -37,9 +37,10 @@ Depois de qualquer mudança: `node build.mjs`. Ele lista no terminal todos os `[
 
 ## Publicar
 
-- **Netlify ou Vercel (recomendado):** conecte o repositório; os arquivos `netlify.toml`/`vercel.json` já dizem para rodar `node build.mjs` e publicar `dist/`.
-- **Sem repositório:** rode `node build.mjs` e arraste a pasta `dist/` em app.netlify.com/drop.
-- Endereços: `/` = creator, `/freelancer` = freelancer. Use um link por criativo no anúncio, com UTMs (ex.: `?utm_source=meta&utm_campaign=criativo-b`). Os UTMs (e `src`/`sck` da Hotmart) passam para o checkout.
+- **Vercel (principal):** importe o repositório em vercel.com → Add New → Project. O `vercel.json` já manda rodar `node build.mjs` e publicar `dist/`. O endereço grátis `*.vercel.app` é detectado sozinho no build (variável `VERCEL_PROJECT_PRODUCTION_URL`), então o link de compartilhamento sai certo sem mexer em nada.
+- **GitHub Pages (reserva):** o workflow em `.github/workflows/pages.yml` publica a cada push em `main`.
+- **Domínio próprio depois:** adicione em Vercel → Settings → Domains. Para forçar um endereço no build, defina `SITE_URL` nas variáveis de ambiente.
+- Endereços: `/` = creator, `/freelancer` = freelancer, `/termos` e `/privacidade`. Use um link por criativo no anúncio, com UTMs (ex.: `?utm_source=meta&utm_campaign=criativo-b`). Os UTMs (e `src`/`sck` da Hotmart) passam para o checkout.
 
 ## Regras da marca (não quebre)
 
