@@ -47,7 +47,7 @@ export default {
   // termos.html e privacidade.html. Contato: Instagram e, se houver, e-mail.
   legal: {
     instagram: 'samuelrmbraga',
-    contactEmail: '', // opcional, ex.: 'contato@edicaomestra.com.br'
+    contactEmail: 'samuelrmbraga40@gmail.com', // opcional, ex.: 'contato@edicaomestra.com.br'
     updated: '23 de novembro de 2026',
   },
 };
