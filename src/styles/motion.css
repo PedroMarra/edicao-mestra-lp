@@ -71,7 +71,7 @@
 .chips li:hover { background: rgba(77, 157, 255, .16); border-color: rgba(77, 157, 255, .6); transform: translateY(-1px); }
 
 /* Tela do hero: linha de leitura (playhead) varrendo o vídeo */
-.screen__scan { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; will-change: transform; background: linear-gradient(90deg, transparent calc(100% - 3px), var(--orange-2) calc(100% - 3px)); animation: scan 6s var(--ease-io) infinite; pointer-events: none; transform: translateX(-100%); }
+.screen__scan { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; will-change: transform; background: linear-gradient(90deg, transparent calc(100% - 26px), rgba(255, 94, 58, .28) calc(100% - 3px), var(--orange-2) calc(100% - 3px)); animation: scan 6s var(--ease-io) infinite; pointer-events: none; transform: translateX(-100%); }
 @keyframes scan { to { transform: translateX(0); } }
 .screen { transition: transform .6s var(--ease-out), box-shadow .6s; }
 @media (hover: hover) and (min-width: 960px) {
