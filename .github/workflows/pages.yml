@@ -21,7 +21,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      # O site oficial está na Vercel. Aqui só publicamos páginas que
+      # redirecionam para lá (mantendo UTMs), para não duplicar conteúdo.
       - run: node build.mjs
+        env:
+          REDIRECT_TO: https://edicao-mestra-lp.vercel.app
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

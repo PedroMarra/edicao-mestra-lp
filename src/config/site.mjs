@@ -6,7 +6,9 @@
 // ─────────────────────────────────────────────────────────────
 export default {
   brand: 'Edição Mestra',
-  domain: 'https://pedromarra.github.io/edicao-mestra-lp', // trocar pelo domínio próprio quando comprar (usado no Open Graph)
+  // Endereço oficial (Vercel). Usado no canonical, Open Graph e sitemap.
+  // Ao comprar domínio próprio, troque aqui (ou defina SITE_URL na Vercel).
+  domain: 'https://edicao-mestra-lp.vercel.app',
 
   // Link do checkout da Cackto (ex.: https://pay.cackto.com.br/xxxxx),
   // com o order bump já configurado lá dentro.

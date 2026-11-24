@@ -21,6 +21,20 @@ const layout = (await import(pathToFileURL(join(SRC, 'layouts/page.mjs')))).defa
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
 
+// Modo redirecionamento (usado pelo GitHub Pages): cada página só manda
+// a pessoa para o endereço oficial, levando junto UTMs e o #âncora.
+// Evita conteúdo duplicado e não quebra links antigos.
+if (process.env.REDIRECT_TO) {
+  const to = process.env.REDIRECT_TO.replace(/\/$/, '');
+  const pages = { 'index.html': '/', 'freelancer.html': '/freelancer', 'termos.html': '/termos', 'privacidade.html': '/privacidade', '404.html': '/' };
+  for (const [file, path] of Object.entries(pages)) {
+    const target = to + path;
+    writeFileSync(join(DIST, file), `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${site.brand}</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><script>location.replace(${JSON.stringify(target)}+location.search+location.hash)</script><meta http-equiv="refresh" content="0;url=${target}"></head><body style="background:#08090E;color:#F4F2FF;font-family:system-ui;padding:24px">Indo para <a style="color:#4D9DFF" href="${target}">${target}</a>…</body></html>`);
+  }
+  console.log(`Redirecionamento → ${to}`);
+  process.exit(0);
+}
+
 // CSS: tokens → base → componentes → seções → movimento, num arquivo só.
 const cssOrder = ['tokens.css', 'base.css', 'components.css', 'sections.css', 'motion.css'];
 writeFileSync(join(DIST, 'styles.css'), cssOrder.map((f) => readFileSync(join(SRC, 'styles', f), 'utf8')).join('\n'));
@@ -34,8 +48,10 @@ writeFileSync(join(DIST, 'main.js'), js);
 if (existsSync(join(ROOT, 'assets'))) cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true, filter: (p) => !p.endsWith('.md') });
 
 const pending = new Map();
+const variants = [];
 for (const file of readdirSync(join(SRC, 'variants')).filter((f) => f.endsWith('.mjs'))) {
   const v = (await import(pathToFileURL(join(SRC, 'variants', file)))).default;
+  variants.push(v);
   const c = { ...content, ...(v.content || {}) };
   const order = v.sections || defaultOrder;
   const body = order.map((name) => {
@@ -60,6 +76,14 @@ for (const file of readdirSync(join(SRC, 'legal')).filter((f) => f.endsWith('.mj
   const html = layout({ site, v, body: legalLayout({ site, doc }) }).replace('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"');
   writeFileSync(join(DIST, doc.out), html);
   console.log(`✓ ${doc.out}  (legal)`);
+}
+
+// robots.txt + sitemap.xml (só as páginas de venda; termos/privacidade são noindex).
+if (site.domain) {
+  const base = site.domain.replace(/\/$/, '');
+  const urls = variants.map((v) => `${base}/${v.out === 'index.html' ? '' : v.out.replace('.html', '')}`);
+  writeFileSync(join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+  writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${base}/sitemap.xml\n`);
 }
 
 if (!site.checkoutUrl) pending.set('link do checkout', new Set(['main.js']));
