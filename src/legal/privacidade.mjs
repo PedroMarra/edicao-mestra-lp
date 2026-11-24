@@ -9,7 +9,7 @@ export default {
 
 <h2>1. Quais dados recebemos</h2>
 <p><strong>Nesta página</strong> não há formulário: você não digita nenhum dado aqui. Podemos usar ferramentas de medição de anúncios (Pixel da Meta e do TikTok) que registram, por meio de cookies, informações de navegação como páginas visitadas, cliques nos botões, tipo de aparelho e a campanha de onde você veio (parâmetros UTM).</p>
-<p><strong>Na compra</strong>, o pagamento acontece na Cackto, nossa plataforma de pagamento, e não neste site. Os dados do cartão ou do Pix ficam com a Cackto, sob a política de privacidade dela. Recebemos dela apenas o necessário para entregar o produto: nome, e-mail, telefone (se informado) e a situação da compra.</p>
+<p><strong>Na compra</strong>, o pagamento acontece na Cakto, nossa plataforma de pagamento, e não neste site. Os dados do cartão ou do Pix ficam com a Cakto, sob a política de privacidade dela. Recebemos dela apenas o necessário para entregar o produto: nome, e-mail, telefone (se informado) e a situação da compra.</p>
 
 <h2>2. Para que usamos</h2>
 <ul>
@@ -20,7 +20,7 @@ export default {
 </ul>
 
 <h2>3. Com quem compartilhamos</h2>
-<p>Com a Cackto (para processar a compra e o reembolso), com a Meta e o TikTok (medição de anúncios, quando ativos) e com o serviço de hospedagem do site. <strong>Não vendemos nem alugamos seus dados.</strong></p>
+<p>Com a Cakto (para processar a compra e o reembolso), com a Meta e o TikTok (medição de anúncios, quando ativos) e com o serviço de hospedagem do site. <strong>Não vendemos nem alugamos seus dados.</strong></p>
 
 <h2>4. Por quanto tempo guardamos</h2>
 <p>Enquanto for necessário para manter seu acesso, dar suporte e cumprir obrigações legais. Depois disso, os dados são excluídos ou anonimizados.</p>

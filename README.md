@@ -6,7 +6,7 @@ Site estático, leve e mobile-first. Um build de ~100 linhas em Node (sem depend
 site/
 ├── build.mjs              ← gera dist/ (node build.mjs)
 ├── src/
-│   ├── config/site.mjs    ← checkout (Cackto), preço, tempos, requisitos, pixels, rodapé
+│   ├── config/site.mjs    ← checkout (Cakto), preço, tempos, requisitos, pixels, rodapé
 │   ├── content/shared.mjs ← textos comuns: passos, pacote, FAQ, depoimentos, autor, oferta
 │   ├── variants/          ← UMA página por arquivo (hero + dor + meta)
 │   │   ├── creator.mjs    → dist/index.html      (criativo B)
@@ -42,7 +42,7 @@ Depois de qualquer mudança: `node build.mjs`. Ele lista no terminal todos os `[
 - **GitHub Pages:** só redireciona para a Vercel, levando os UTMs junto (`REDIRECT_TO` no workflow). Assim links antigos continuam funcionando e o Google não vê conteúdo duplicado.
 - O build gera `robots.txt` e `sitemap.xml` com as páginas de venda.
 - **Domínio próprio depois:** adicione em Vercel → Settings → Domains. Para forçar um endereço no build, defina `SITE_URL` nas variáveis de ambiente.
-- Endereços: `/` = creator, `/freelancer` = freelancer, `/termos` e `/privacidade`. Use um link por criativo no anúncio, com UTMs (ex.: `?utm_source=meta&utm_campaign=criativo-b`). Os UTMs (e `src`/`sck`) passam para o checkout da Cackto, que mostra a origem de cada venda.
+- Endereços: `/` = creator, `/freelancer` = freelancer, `/termos` e `/privacidade`. Use um link por criativo no anúncio, com UTMs (ex.: `?utm_source=meta&utm_campaign=criativo-b`). Os UTMs (e `src`/`sck`) passam para o checkout da Cakto, que mostra a origem de cada venda.
 
 ## Regras da marca (não quebre)
 

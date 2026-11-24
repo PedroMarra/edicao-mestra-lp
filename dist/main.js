@@ -1,6 +1,6 @@
 // Edição Mestra · main.js (sem dependências)
 // CHECKOUT_URL é preenchido pelo build a partir de src/config/site.mjs.
-const CHECKOUT_URL = '[PREENCHER: link do checkout]';
+const CHECKOUT_URL = 'https://pay.cakto.com.br/d77sy56_1363931';
 
 (() => {
   document.documentElement.classList.add('js');

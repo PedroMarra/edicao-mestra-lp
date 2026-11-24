@@ -9,7 +9,7 @@ export default ({ site }) => {
   <div class="wrap footer__in">
     <p class="logo"><i aria-hidden="true"></i>${site.brand}</p>
     <p class="footer__links"><a href="termos.html">Termos de uso</a> · <a href="privacidade.html">Privacidade</a>${contact ? ` · ${contact}` : ''}</p>
-    <p>© ${new Date().getFullYear()} ${site.brand}. Pagamento processado com segurança pela Cackto.</p>
+    <p>© ${new Date().getFullYear()} ${site.brand}. Pagamento processado com segurança pela Cakto.</p>
     <p class="footer__disc">Este site não é afiliado à Anthropic nem à Adobe. Claude é marca da Anthropic; Premiere é marca da Adobe.</p>
   </div>
 </footer>`;

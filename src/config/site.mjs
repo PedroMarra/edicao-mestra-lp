@@ -10,15 +10,15 @@ export default {
   // Ao comprar domínio próprio, troque aqui (ou defina SITE_URL na Vercel).
   domain: 'https://edicao-mestra-lp.vercel.app',
 
-  // Link do checkout da Cackto (ex.: https://pay.cackto.com.br/xxxxx),
+  // Link do checkout da Cakto (ex.: https://pay.cakto.com.br/xxxxx),
   // com o order bump já configurado lá dentro.
   // Todos os botões apontam para cá e herdam os UTMs da página.
-  checkoutUrl: '',
+  checkoutUrl: 'https://pay.cakto.com.br/d77sy56_1363931',
 
   price: {
     value: 'R$36,99',
     // Preço que passa a valer DEPOIS do prazo (deadline.until). Precisa ser
-    // cobrado de verdade a partir dessa data (troque também na Cackto).
+    // cobrado de verdade a partir dessa data (troque também na Cakto).
     // Vazio = sem bloco de lançamento.
     after: 'R$67',
     // Só preencha se o preço "de" existiu de verdade (CDC). Senão, deixe ''.

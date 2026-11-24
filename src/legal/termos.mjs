@@ -20,7 +20,7 @@ export default {
 <p>Você recebe uma licença pessoal e intransferível para usar a skill nos seus projetos e nos projetos dos seus clientes. Não é permitido revender, redistribuir, compartilhar o download ou publicar o conteúdo da skill, no todo ou em parte.</p>
 
 <h2>5. Garantia e reembolso</h2>
-<p>Você tem 7 dias corridos, a partir da compra, para pedir o reembolso integral, sem precisar justificar (art. 49 do Código de Defesa do Consumidor). O pedido é feito pela própria Cackto (no e-mail da compra) ou falando com a gente.</p>
+<p>Você tem 7 dias corridos, a partir da compra, para pedir o reembolso integral, sem precisar justificar (art. 49 do Código de Defesa do Consumidor). O pedido é feito pela própria Cakto (no e-mail da compra) ou falando com a gente.</p>
 
 <h2>6. Resultados</h2>
 <p>O tempo de edição depende do vídeo, do computador, da versão das ferramentas e da sua experiência. Os tempos mostrados na página (como "3 horas → 10 minutos") são da experiência do criador e servem de referência, não de promessa. Revise sempre o resultado antes de publicar ou entregar a um cliente.</p>

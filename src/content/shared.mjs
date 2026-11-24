@@ -51,7 +51,7 @@ export default {
 
   guarantee: {
     title: 'Teste por 7 dias.',
-    text: 'Se não editar mais rápido, devolvemos 100% do valor. É só pedir pela Cackto, sem perguntas. Esse direito é seu por lei (art. 49 do CDC), e a gente prefere deixar isso claro antes da compra.',
+    text: 'Se não editar mais rápido, devolvemos 100% do valor. É só pedir pela Cakto, sem perguntas. Esse direito é seu por lei (art. 49 do CDC), e a gente prefere deixar isso claro antes da compra.',
   },
 
   faq: [
@@ -61,9 +61,9 @@ export default {
     { q: 'Posso usar em vídeos de clientes?', a: () => 'Pode. A licença permite editar vídeos seus e dos seus clientes, inclusive cobrando pelo trabalho. Só não pode revender nem compartilhar a skill.' },
     { q: 'Funciona em qual versão do Premiere?', a: (s, f) => `${f(s.requirements.premiereVersion, 'versão do Premiere testada')}.` },
     { q: 'Funciona no Mac e no Windows?', a: (s, f) => `${f(s.requirements.os, 'sistemas testados')}.` },
-    { q: 'Como recebo o acesso?', a: (s) => `Logo depois do pagamento aprovado você recebe um e-mail da Cackto com o acesso à área de membros, o download da skill e o guia de instalação. No Pix, a aprovação é na hora. Se o e-mail não chegar, confira o spam ou escreva para <a href="mailto:${s.legal.contactEmail}">${s.legal.contactEmail}</a>.` },
+    { q: 'Como recebo o acesso?', a: (s) => `Logo depois do pagamento aprovado você recebe um e-mail da Cakto com o acesso à área de membros, o download da skill e o guia de instalação. No Pix, a aprovação é na hora. Se o e-mail não chegar, confira o spam ou escreva para <a href="mailto:${s.legal.contactEmail}">${s.legal.contactEmail}</a>.` },
     { q: 'E se eu travar na instalação?', a: (s) => `Você tem suporte direto: mande um e-mail para <a href="mailto:${s.legal.contactEmail}">${s.legal.contactEmail}</a> ou uma mensagem no Instagram <a href="https://www.instagram.com/${s.legal.instagram}/" target="_blank" rel="noopener">@${s.legal.instagram}</a> que a gente te ajuda a deixar tudo funcionando.` },
-    { q: 'E se eu não gostar?', a: () => 'Você tem 7 dias para pedir o reembolso pela Cackto e recebe 100% do valor de volta.' },
+    { q: 'E se eu não gostar?', a: () => 'Você tem 7 dias para pedir o reembolso pela Cakto e recebe 100% do valor de volta.' },
   ],
 
 
