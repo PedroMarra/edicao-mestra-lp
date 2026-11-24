@@ -11,7 +11,7 @@ export default {
     skillDef:
       'Uma skill é um pacote de instruções que ensina o Claude a fazer uma tarefa do jeito certo, sempre.',
     steps: [
-      { title: 'Instale a skill no Claude Code', text: (s, f) => `Siga o guia passo a passo. Leva em média ${f(s.times.install, 'tempo de instalação', ' minutos')}.` },
+      { title: 'Instale a skill no Claude Code', text: (s, f) => `Siga o guia passo a passo (Mac ou Windows). Leva ${f(s.times.install, 'tempo de instalação')}. Um comando no fim confere se está tudo certo.` },
       { title: 'Mande o vídeo cru e diga o estilo', text: () => 'Aponte o arquivo bruto e diga como quer: ritmo de Reels, podcast, aula. Ela corta silêncios e erros sozinha.' },
       { title: 'Abra a timeline pronta no Premiere', text: () => 'Os cortes, legendas e zooms já estão na timeline. Você revisa e ajusta o que quiser, como sempre fez.' },
     ],
@@ -21,12 +21,12 @@ export default {
   // (docs/02-oferta.md); a página marca para conferir. Troque para false
   // depois de confirmar que o item realmente vem no produto.
   deliverables: [
-    { title: 'Skill Edição Mestra', text: 'O pacote que corta, legenda e dá ritmo ao vídeo direto no Premiere.', tag: 'Núcleo', confirm: true },
-    { title: 'Guia de instalação', text: 'Vídeo e passo a passo para instalar e conectar ao Premiere.', tag: 'M1', confirm: true },
-    { title: 'Corte de silêncios e erros', text: 'O módulo que tira pausas, gaguejos e repetições do bruto.', tag: 'M2', confirm: true },
-    { title: 'Legendas, zooms e motion', text: 'Estilos prontos de legenda e zoom para segurar a atenção.', tag: 'M3', confirm: true },
-    { title: 'Fluxo completo', text: 'Do bruto ao vídeo pronto para postar, num fluxo só.', tag: 'M4', confirm: true },
-    { title: 'Bônus: checklist de retenção 3s', text: 'O que conferir nos primeiros segundos antes de publicar.', tag: 'Bônus', confirm: true },
+    { title: 'Skill Edição Mestra v1.0', text: 'Corta, legenda, põe zoom, motion e efeitos sonoros e acerta o volume para as redes. Sons e fontes já liberados para uso comercial.', tag: 'Núcleo' },
+    { title: 'Corte pelo som', text: 'Tira silêncios, respirações, "éé", gaguejos, erros e retomadas do bruto, com jump cut e zoom.', tag: 'Corte' },
+    { title: '7 estilos de motion', text: 'Motion graphics preso à palavra falada, incluindo o estilo "Edição Futurística", com bases prontas em código.', tag: 'Motion' },
+    { title: 'Montagem no Premiere', text: 'Monta a sequência direto no Premiere (com um conector do Premiere) ou entrega vídeo, legendas e XML para você importar.', tag: 'Premiere' },
+    { title: 'Ficha de cada cliente', text: 'Cadastre a identidade de cada cliente uma vez. A skill segue as regras dele em todo vídeo novo.', tag: 'Clientes' },
+    { title: 'Guia de instalação', text: 'Passo a passo para Mac e Windows, com um comando que confere se falta alguma coisa.', tag: 'Guia' },
   ],
 
   audience: {
@@ -45,7 +45,7 @@ export default {
   ],
 
   offer: {
-    includes: ['Skill Edição Mestra', 'Guia de instalação passo a passo', 'Estilos de legenda e zoom', 'Atualizações da versão comprada'],
+    includes: ['Skill Edição Mestra v1.0', 'Corte, legendas, zoom, SFX e 7 estilos de motion', 'Guia de instalação para Mac e Windows', 'Licença para editar vídeos de clientes', 'Atualizações da versão 1.x'],
     badges: ['Garantia de 7 dias', 'Acesso imediato por e-mail', 'Pix ou cartão'],
   },
 
@@ -55,8 +55,10 @@ export default {
   },
 
   faq: [
-    { q: 'Preciso saber programar?', a: () => 'Não. Você só copia os comandos do guia e conversa com o Claude em português. Se você sabe abrir o Premiere, consegue instalar.' },
+    { q: 'Preciso saber programar?', a: () => 'Não. Na instalação você copia alguns comandos do guia e cola no terminal, e um comando de conferência avisa se faltou algo. Depois é só conversar com o Claude em português.' },
     { q: 'Preciso pagar o Claude?', a: (s, f) => `Sim. O Claude Code exige um plano pago do Claude: ${f(s.requirements.claudePlan, 'qual plano e quanto custa')}. A Edição Mestra é paga uma vez só; a assinatura do Claude é à parte.` },
+    { q: 'Ela mexe no Premiere sozinha?', a: () => 'Sim, com um conector do Premiere (servidor MCP) que você liga ao Claude Code uma vez, seguindo o guia. Sem o conector, a skill entrega o vídeo cortado, as legendas e um arquivo XML para você importar no Premiere.' },
+    { q: 'Posso usar em vídeos de clientes?', a: () => 'Pode. A licença permite editar vídeos seus e dos seus clientes, inclusive cobrando pelo trabalho. Só não pode revender nem compartilhar a skill.' },
     { q: 'Funciona em qual versão do Premiere?', a: (s, f) => `${f(s.requirements.premiereVersion, 'versão do Premiere testada')}.` },
     { q: 'Funciona no Mac e no Windows?', a: (s, f) => `${f(s.requirements.os, 'sistemas testados')}.` },
     { q: 'Como recebo o acesso?', a: (s) => `Logo depois do pagamento aprovado você recebe um e-mail da Cackto com o acesso à área de membros, o download da skill e o guia de instalação. No Pix, a aprovação é na hora. Se o e-mail não chegar, confira o spam ou escreva para <a href="mailto:${s.legal.contactEmail}">${s.legal.contactEmail}</a>.` },

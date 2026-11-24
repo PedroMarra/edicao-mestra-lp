@@ -43,14 +43,16 @@ export default {
     before: '3 horas',
     after: '10',
     afterUnit: 'minutos',
-    install: '15', // média estimada para instalar com o guia (validar com compradores reais)
+    // Tempo real do guia da skill v1.0 (LEIA-PRIMEIRO.md).
+    install: '30 a 45 minutos (na primeira vez pode levar 1 a 2 horas, quase tudo é download)',
   },
 
   // Requisitos (aparecem no hero, na oferta e no FAQ).
   requirements: {
-    claudePlan: '',       // ex.: 'Claude Pro (cerca de R$110/mês)'
-    premiereVersion: '',  // ex.: 'Premiere Pro 25.0 ou mais novo'
-    os: '',               // ex.: 'Mac com Apple silicon e Windows 11'
+    // Conforme LEIA-PRIMEIRO.md da skill v1.0.
+    claudePlan: 'o Pro ou superior',
+    premiereVersion: 'Adobe Premiere Pro da Creative Cloud. Ele só é necessário para montar a sequência; o corte, as legendas e o motion saem como arquivos mesmo sem ele',
+    os: 'Funciona melhor no Mac (com chip Apple). No Windows, o corte, as legendas e o motion funcionam; só dois extras (máscara de pessoa e leitura de PDF) são exclusivos do Mac',
   },
 
   // Pixels: cole só o ID. Vazio = nada é carregado.

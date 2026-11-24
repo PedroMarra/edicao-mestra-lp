@@ -43,7 +43,7 @@ ${og}
      Cole os IDs em src/config/site.mjs (pixels.meta / pixels.tiktok)
      e rode o build. O clique em qualquer botão dispara InitiateCheckout
      (Meta) e InitiateCheckout (TikTok) pelo main.js.
-     ${site.pixels.meta ? '' : '[PREENCHER: ID do Pixel da Meta] '}${site.pixels.tiktok ? '' : '[PREENCHER: ID do Pixel do TikTok]'}
+     ${site.pixels.gtm ? 'Pixels configurados pelo Google Tag Manager.' : `${site.pixels.meta ? '' : '[PREENCHER: ID do Pixel da Meta] '}${site.pixels.tiktok ? '' : '[PREENCHER: ID do Pixel do TikTok]'}`}
 ──────────────────────────────────────────────────────── -->${metaPixel(site.pixels.meta)}${tiktokPixel(site.pixels.tiktok)}
 </head>
 <body data-variant="${v.slug}">${gtmBody(site.pixels.gtm)}

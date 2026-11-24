@@ -11,7 +11,7 @@ export default {
 <p>A ${site.brand} é uma skill (um pacote de instruções e arquivos) para usar com o Claude Code, que automatiza etapas da edição de vídeo no Adobe Premiere, acompanhada de guia de instalação e materiais de apoio. É um produto digital, entregue por download.</p>
 
 <h2>2. O que você precisa ter</h2>
-<p>Para usar a skill você precisa de um computador compatível, do Adobe Premiere e do Claude Code com um plano pago do Claude. Essas ferramentas são contratadas por você, diretamente com a Adobe e com a Anthropic, e não estão incluídas no preço. A ${site.brand} não é afiliada nem endossada pela Anthropic ou pela Adobe.</p>
+<p>Para usar a skill você precisa de um computador compatível, do Adobe Premiere e do Claude Code com um plano pago do Claude (Pro ou superior). Essas ferramentas são contratadas por você, diretamente com a Adobe e com a Anthropic, e não estão incluídas no preço. A ${site.brand} não é afiliada nem endossada pela Anthropic ou pela Adobe.</p>
 
 <h2>3. Acesso e entrega</h2>
 <p>Depois do pagamento aprovado, você recebe o acesso no e-mail informado na compra. No Pix a aprovação costuma ser imediata; no cartão, pode levar alguns minutos.</p>
@@ -26,7 +26,7 @@ export default {
 <p>O tempo de edição depende do vídeo, do computador, da versão das ferramentas e da sua experiência. Os tempos mostrados na página (como "3 horas → 10 minutos") são da experiência do criador e servem de referência, não de promessa. Revise sempre o resultado antes de publicar ou entregar a um cliente.</p>
 
 <h2>7. Atualizações e compatibilidade</h2>
-<p>Você tem acesso às atualizações da versão comprada. Mudanças feitas pela Adobe ou pela Anthropic nas ferramentas podem afetar o funcionamento da skill; nesses casos buscamos publicar correções, mas não garantimos compatibilidade com todas as versões futuras.</p>
+<p>Você tem acesso às atualizações da versão 1.x. Mudanças feitas pela Adobe ou pela Anthropic nas ferramentas podem afetar o funcionamento da skill; nesses casos buscamos publicar correções, mas não garantimos compatibilidade com todas as versões futuras.</p>
 
 <h2>8. Responsabilidade</h2>
 <p>Recomendamos trabalhar sempre com cópia de segurança dos seus projetos. Não nos responsabilizamos por perda de arquivos, por uso fora do que está descrito no guia ou por falhas das ferramentas de terceiros.</p>
