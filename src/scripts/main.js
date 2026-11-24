@@ -20,6 +20,7 @@ const CHECKOUT_URL = '__CHECKOUT_URL__';
   // 2. Pixel: InitiateCheckout no clique.
   buttons.forEach((a) => a.addEventListener('click', () => {
     const variant = document.body.dataset.variant;
+    try { (window.dataLayer = window.dataLayer || []).push({ event: 'initiate_checkout', variant, value: __PRICE__, currency: 'BRL' }); } catch (e) {}
     try { window.fbq && window.fbq('track', 'InitiateCheckout', { content_name: 'Edição Mestra', value: __PRICE__, currency: 'BRL', variant }); } catch (e) {}
     try { window.ttq && window.ttq.track('InitiateCheckout', { content_name: 'Edição Mestra', value: __PRICE__, currency: 'BRL' }); } catch (e) {}
   }));

@@ -53,6 +53,11 @@ export default {
 
   // Pixels: cole só o ID. Vazio = nada é carregado.
   pixels: {
+    // Google Tag Manager. Se o Pixel da Meta/TikTok for instalado DENTRO do
+    // GTM, deixe meta/tiktok vazios aqui para não contar tudo em dobro.
+    // Cada clique em botão de compra envia o evento "initiate_checkout"
+    // para o dataLayer (use como acionador no GTM).
+    gtm: 'GTM-K9Z4JBF4',
     meta: '',
     tiktok: '',
   },

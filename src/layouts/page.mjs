@@ -1,6 +1,13 @@
 // Esqueleto HTML comum a todas as variantes.
 import { hasAsset } from '../lib/helpers.mjs';
 
+// Google Tag Manager: script assíncrono (não trava a página) + noscript.
+const gtmHead = (id) => id ? `
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${id}');</script>` : '';
+const gtmBody = (id) => id ? `
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${id}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>` : '';
+
 const metaPixel = (id) => id ? `
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${id}');fbq('track','PageView');</script>` : '';
 
@@ -17,7 +24,7 @@ export default ({ site, v, body }) => {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>${v.meta.title}</title>
+<title>${v.meta.title}</title>${gtmHead(site.pixels.gtm)}
 <meta name="description" content="${v.meta.description}">
 <meta name="theme-color" content="#08090E">
 <meta property="og:type" content="website">
@@ -39,7 +46,7 @@ ${og}
      ${site.pixels.meta ? '' : '[PREENCHER: ID do Pixel da Meta] '}${site.pixels.tiktok ? '' : '[PREENCHER: ID do Pixel do TikTok]'}
 ──────────────────────────────────────────────────────── -->${metaPixel(site.pixels.meta)}${tiktokPixel(site.pixels.tiktok)}
 </head>
-<body data-variant="${v.slug}">
+<body data-variant="${v.slug}">${gtmBody(site.pixels.gtm)}
 <a class="skip" href="#dor">Pular para o conteúdo</a>
 ${body}
 <script src="main.js" defer></script>
