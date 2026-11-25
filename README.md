@@ -14,7 +14,7 @@ site/
 │   ├── sections/          ← cada seção é uma função; index.mjs define a ordem
 │   ├── layouts/page.mjs   ← <head>, SEO, Open Graph, pixels
 │   ├── styles/            ← tokens.css (paleta) → base → components → sections
-│   └── scripts/main.js    ← checkout + UTMs, InitiateCheckout, botão fixo
+│   └── scripts/main.js    ← checkout + UTMs, evento do GTM, botão fixo
 ├── assets/                ← vídeos e imagens (ver assets/README.md)
 ├── dist/                  ← saída pronta para subir (não edite à mão)
 ├── netlify.toml / vercel.json

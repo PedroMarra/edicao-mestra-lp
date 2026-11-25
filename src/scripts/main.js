@@ -17,11 +17,12 @@ const CHECKOUT_URL = '__CHECKOUT_URL__';
     buttons.forEach((a) => { a.href = url.toString(); });
   }
 
-  // 2. Pixel: InitiateCheckout no clique.
+  // 2. Clique no botão de compra: evento para o GTM (dataLayer).
+  //    O InitiateCheckout da Meta NÃO sai daqui: o checkout da Cakto já
+  //    dispara quando abre (senão conta em dobro).
   buttons.forEach((a) => a.addEventListener('click', () => {
     const variant = document.body.dataset.variant;
     try { (window.dataLayer = window.dataLayer || []).push({ event: 'initiate_checkout', variant, value: __PRICE__, currency: 'BRL' }); } catch (e) {}
-    try { window.fbq && window.fbq('track', 'InitiateCheckout', { content_name: 'Edição Mestra', value: __PRICE__, currency: 'BRL', variant }); } catch (e) {}
     try { window.ttq && window.ttq.track('InitiateCheckout', { content_name: 'Edição Mestra', value: __PRICE__, currency: 'BRL' }); } catch (e) {}
   }));
 

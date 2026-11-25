@@ -41,8 +41,8 @@ ${og}
 <link rel="stylesheet" href="styles.css">
 <!-- ── PIXELS ─────────────────────────────────────────────
      Cole os IDs em src/config/site.mjs (pixels.meta / pixels.tiktok)
-     e rode o build. O clique em qualquer botão dispara InitiateCheckout
-     (Meta) e InitiateCheckout (TikTok) pelo main.js.
+     e rode o build. O InitiateCheckout da Meta vem do checkout da Cakto;
+     o main.js só manda 'initiate_checkout' para o dataLayer (GTM).
      ${site.pixels.gtm ? 'Pixels configurados pelo Google Tag Manager.' : `${site.pixels.meta ? '' : '[PREENCHER: ID do Pixel da Meta] '}${site.pixels.tiktok ? '' : '[PREENCHER: ID do Pixel do TikTok]'}`}
 ──────────────────────────────────────────────────────── -->${metaPixel(site.pixels.meta)}${tiktokPixel(site.pixels.tiktok)}
 </head>
